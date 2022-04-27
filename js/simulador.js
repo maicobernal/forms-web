@@ -8,13 +8,12 @@
      return unidades;
  }
 
-
  function calculos() {
      let datos = [];
      datos.push(prompt("Ingrese nombre del paciente ")); //0
      if (isNaN(datos[0]) == false || datos[0] == "") {
          alert("Nombre incorrecto");
-         datos.splice(0, -1);
+         datos.splice(-1);
          calculos();
      } else {
          ingresarNHC(datos);
@@ -22,10 +21,10 @@
  }
 
  function ingresarNHC(datos) {
-     datos.push(prompt("Ingrese número de historia clinica del paciente")); //1
-     if (isNaN(datos[1]) == true || datos[1] == "") {
+     datos.push(Number(prompt("Ingrese número de historia clinica del paciente"))); //1
+     if (datos.includes(NaN) == true || datos.includes(0) == true)  {
          alert("Nro de HC incorrecto");
-         datos.splice(0, -1);
+         datos.splice(-1);
          ingresarNHC(datos);
      } else {
          seleccionarCalculo(datos);
@@ -45,7 +44,7 @@
          case "1":
              datos.push(Number(prompt("Ingrese Peso en Kg"))); //2
              datos.push(Number(prompt("Ingrese Altura en Cms"))); //3
-             if (isNaN(datos[2]) == true || datos[2] == "" || isNaN(datos[3]) == true || datos[3] == "") {
+             if (datos.includes(NaN) == true || datos.includes(0) == true)  {
                  alert("Datos incorrectos");
                  datos.splice(-2);
                  seleccionarCalculo(datos);
@@ -61,7 +60,7 @@
                  datos.push(Number(prompt("Ingrese Hemoglobina en g/dL"))); //5 
                  datos.push(Number(prompt("Ingrese saturación arterial de O2"))); //6
                  datos.push(Number(prompt("Ingrese saturación pulmonar de O2"))); //7
-                 if (isNaN(datos[5]) == true || datos[5] == "" || isNaN(datos[6]) == true || datos[6] == "" || isNaN(datos[7]) == true || datos[7] == "") {
+                 if (datos.includes(NaN) == true || datos.includes(0) == true)  {
                      alert("Datos incorrectos");
                      datos.splice(-3);
                      seleccionarCalculo(datos);
@@ -81,7 +80,7 @@
                  datos.push(Number(prompt("Ingrese presión arterial pulmonar diastólica en mmHg"))); //13
                  datos.push(Number(prompt("Ingrese presión Wedge en mmHg"))); //14
                  datos.push(Number(prompt("Ingrese presión media de aurícula derecha en mmHg"))); //15
-                 if (isNaN(datos[10]) == true || datos[10] == "" || isNaN(datos[11]) == true || datos[11] == "" || isNaN(datos[12]) == true || datos[12] == "" || isNaN(datos[13]) == true || datos[13] == "" || isNaN(datos[14]) == true || datos[14] == "" || isNaN(datos[15]) == true || datos[15] == "") {
+                 if (datos.includes(NaN) == true || datos.includes(0) == true) {
                      alert("Datos incorrectos");
                      datos.splice(-6);
                      seleccionarCalculo(datos);
