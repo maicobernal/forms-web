@@ -1,5 +1,4 @@
  //Cateterismo derecho
- //Ver bien condicionales y beta testing final de la app
 
  calculos();
 

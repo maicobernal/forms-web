@@ -1,0 +1,87 @@
+/* Paleta de colores */
+$color-text: #463f3a;
+$color-dark: black;
+$color-background: linear-gradient(to bottom right, #fffcf7, #c9d6b1);
+$color-navbar: #c9d6b1;
+$color-aside: #D9E2C8;
+$color-hover: #a1b5d8;
+$color-border-important: #738290;
+$color-border-regular: #463f3a;
+$color-button: #219ebc;
+$color-button2: #e63946;
+$color-button3: #7f5539;
+
+/*Tipografia*/
+$font-type-p: 'Lato',
+sans-serif;
+$font-type-h: 'Jura',
+sans-serif;
+
+/*Tamaño fuentes*/
+$font-p-sm: 1rem;
+$font-p-md:1.1rem;
+$font-p-lg:1.2rem;
+$font-p-xl:1.3rem;
+$font-h-sm:1.3rem;
+$font-h-md: 1.4rem;
+$font-h-lg: 1.5rem;
+$font-h-xl: 2.5rem;
+
+/*Interlineado*/
+$text-interlineado-sm: 1rem;
+$text-interlineado-md: 1.3rem;
+$text-interlineado-lg: 1.5rem;
+
+/*Alineacion*/
+$align-center: center;
+$align-justify: justify;
+$align-left: left;
+
+/*Estilos textos*/
+$text-bold: bold;
+$text-bolder: bolder;
+$text-italic: italic;
+
+/*Espaciado*/
+$space-xxs: 0.25rem;
+$space-xs: 0.5rem;
+$space-sm: 1rem;
+$space-md: 2rem;
+$space-lg: 3rem;
+
+/*Mixins*/
+
+/*Border para imagenes*/
+@mixin bordered($color: $color-border-important, $width: $space-xs, $radius: 1rem) {
+  border: $width double $color;
+  border-radius: $radius;
+  margin: $space-xs 0 $space-xs $space-xs;
+}
+
+/*Estilos de fuentes - por default tamaño mas chico*/
+@mixin title($color: $color-text, $size: $font-h-sm) {
+  font-family: $font-type-h;
+  font-weight: $text-bolder;
+  font-size: $size;
+  color: $color;
+  text-align: $align-center;
+  padding: $space-sm 0 $space-sm 0;
+}
+
+@mixin text($color: $color-text, $size:$font-p-sm, $interlineado: 1rem) {
+  font-family: $font-type-p;
+  font-size: $size;
+  color: $color;
+  line-height: $interlineado;
+  text-align: $align-justify;
+  padding: 0 $space-sm 0 $space-sm;
+}
+
+/*Map para caption*/
+$caption-style:(align-center: center,
+  font-h-sm: 1.3rem,
+  color-text: #463f3a,
+  space-sm: 1rem,
+  font-type-p: $font-type-p,
+  text-bolder: bolder,
+)

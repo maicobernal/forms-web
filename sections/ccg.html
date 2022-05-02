@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informes de hemodinamia - CCG</title>
+  <meta name="description" content="Formulario para automatizacion de informes medicos para servicios de hemodinamia" />
+  <meta name="keywords" content="INFORMES MEDICOS HEMODINAMIA" />
+  <meta name="robots" content="index,follow" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon16.png">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&family=Lato:wght@300;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://kit.fontawesome.com/9b8325ff01.js" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+<body class="grid-container">
+
+
+  <header>
+    <div class="header__banner">
+      <a href="index.html"> <img class="header__logo animate__animated animate__jello" src="../images/logo.jpg"></a>
+      <h1 class="header__titulo animate__animated animate__bounce">Informes de Cateterismo<br
+          class="d-lg-none d-xl-none" /> Hemodinamia</h1>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav w-100 justify-content-around">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="../index.html">CCG + ATC</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="ccg.html">CCG diagnostica</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="atc.html" id="navbarDropdownMenuLink" role="button"
+                aria-expanded="false">
+                <!-- data-bs-toggle="dropdown"  -->
+                Angioplastia
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="atc.html#">ATC simple</a></li>
+                <li><a class="dropdown-item" href="atc.html#">ATC compleja</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cd.html">Cateterismo derecho</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tavi.html">TAVI</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="h__md">Informe de cinecoronariografía</h2>
+
+    <div class="container-fluid">
+      <div>
+        <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
+          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg">
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Nombre y apellido</label>
+              <input type="text"  pattern="[A-Za-z]{3}" class="form-control" id="name_form">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Nro de procedimiento</label>
+              <input type="number" class="form-control" id="nroproc_form">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Fecha del procedimiento</label>
+              <input type="date" class="form-control" id="date_form">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">DNI o documento</label>
+              <input type="number" class="form-control" id="dni_form">
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Médico o centro solicitante</label>
+              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="medsol_form">
+            </div>
+            <div class="row g-3 justify-content-evenly">
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Acceso</label>
+                <input class="form-check-input" type="radio"id="acceso_rad" value="radial">
+                <label class="form-check-label">
+                  Radial
+                </label>
+                <input class="form-check-input" type="radio"id="acceso_fem" value="femoral">
+                <label class="form-check-label">
+                  Femoral
+                </label>
+                <input class="form-check-input" type="radio"id="acceso_cub" value="cubital">
+                <label class="form-check-label">
+                  Cubital
+                </label>
+                <input class="form-check-input" type="radio"id="acceso_rad_dist" value="radial_dist">
+                <label class="form-check-label">
+                  Radial distal
+                </label>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Localización</label>
+                <input class="form-check-input" type="radio"id="acceso_der" value="derecho">
+                <label class="form-check-label">
+                  Derecho
+                </label>
+                <input class="form-check-input" type="radio"id="acceso_izq" value="izquierdo">
+                <label class="form-check-label">
+                  Izquierdo
+                </label>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Tamaño introductor</label>
+                <input class="form-check-input" type="radio"id="5fr_form" value="5fr">
+                <label class="form-check-label">
+                  5 French
+                </label>
+                <input class="form-check-input" type="radio"id="6fr_form" value="6fr">
+                <label class="form-check-label">
+                  6 French
+                </label>
+                <input class="form-check-input" type="radio"id="7fr_form" value="7fr">
+                <label class="form-check-label">
+                  7 French
+                </label>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Tipo introductor</label>
+                <input class="form-check-input" type="radio"id="intro_corto" value="corto">
+                <label class="form-check-label">
+                  Corto
+                </label>
+                <input class="form-check-input" type="radio"id="intro_largo" value="largo">
+                <label class="form-check-label">
+                  Largo
+                </label>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label form__recetas">¿Requirió conversión?</label>
+                <input class="form-check-input" type="radio" id="si_conversion" value="si_conversion">
+                <label class="form-check-label">
+                  Sí
+                </label>
+                <input class="form-check-input" type="radio"id="no_conversion" value="no_conversión">
+                <label class="form-check-label">
+                  No
+                </label>
+              </div>
+
+              <div class="col-md-4">
+                <label>Motivo de conversión</label>
+                <select class="form-select"id="motivo_conv">
+
+                  <option selected value="ninguno">Ninguno</option>
+                  <option value="vasoespasmo">Vasoespasmo</option>
+                  <option value="inadecuado_soporte">Inadecuado soporte</option>
+                  <option value="mayor frenchaje">Necesidad de mayor frenchaje</option>
+                  <option value="tortuosidad subclavia">Excesiva tortuosidad subclavia</option>
+                  <option value="loop radial o braquial">Loop radial o braquial</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="">Catéteres utilizados</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" value="tiger" id="tiger">
+                  <label class="form-check-label">
+                    Tiger
+                  </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="judkins_dx" id="jljr_dx">
+                    <label class="form-check-label">
+                      JL y JR diagnósticos
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="guiaEBU" id="ebu">
+                    <label class="form-check-label">
+                      guía EBU
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="guiaJR" id="jr">
+                    <label class="form-check-label">
+                      guía JR
+                    </label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label form__recetas">Dosis de heparina</label>
+                <input type="text" class="form-control" id="heparina" value="5000" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Tiempo de radioscopia</label>
+                <input type="number" class="form-control" id="rayos" >
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Dosis de mGy</label>
+                <input type="number" class="form-control" id="mgy">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Cantidad de contraste</label>
+                <input type="number" class="form-control" id="contraste">
+              </div>
+              <div class="col-md-4">
+                <label>Operadores</label>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" value="bernal" id="bernal">
+                  <label class="form-check-label">
+                    Bernal
+                  </label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="ramos" id="ramos">
+                    <label class="form-check-label">
+                      Ramos
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="laino" id="laino">
+                    <label class="form-check-label">
+                      Laiño
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="payaslian" id="payaslian">
+                    <label class="form-check-label">
+                      Payaslian
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Compresión</label>
+                <input class="form-check-input" type="radio"id="estandar" value="compresion_normal">
+                <label class="form-check-label">
+                  Estandar
+                </label>
+                <input class="form-check-input" type="radio"id="proglide" value="proglide">
+                <label class="form-check-label">
+                  Proglide
+                </label>
+                <input class="form-check-input" type="radio"id="sutura" value="sutura">
+                <label class="form-check-label">
+                  Sutura
+                </label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Complicaciones</label>
+              <input type="email" class="form-control" id="complicaciones">
+            </div>
+
+
+            <div class="card h-100 aside__card" id="lesion1">
+              <div class="card-body">
+                <a href="#" class="card-title h5">Lesion número 1</a>
+                <div class="input-group mb-3">
+                  <label class="input-group-text">Vaso</label>
+                  <select class="form-select" id="lesion1_vaso">
+                    <option selected value="0">Elegir...</option>
+                    <option value="TCI">TCI</option>
+                    <option value="DA">DA</option>
+                    <option value="Cx">Cx</option>
+                    <option value="Ramus">Ramus</option>
+                    <option value="CD">CD</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <select class="form-select" id="lesion1_segmento">
+                    <option selected value="0">Elegir...</option>
+                    <option value="ostial">Ostial</option>
+                    <option value="proximal">Proximal</option>
+                    <option value="medio">Medio</option>
+                    <option value="distal">Distal</option>
+                  </select>
+                  <label class="input-group-text">Segmento</label>
+                </div>
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text">% de obstrucción</label>
+                  <input type="number" class="form-control"
+                    id="lesion1_severidad">
+                </div>
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion1_calcio"
+                    >
+                    <option value="ninguno" selected>Ninguna</option>
+                    <option value="moderado">Moderada</option>
+                    <option value="severo">Severa</option>
+                  </select>
+                  <label class="input-group-text">Calcio</label>
+                </div>
+
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion1_bifurc"
+                    >
+                    <option value="no es bifurcación">No es bifurcación</option>
+                    <option value="1.1.1">1.1.1</option>
+                    <option value="1.1.0">1.1.0</option>
+                    <option value="1.0.1">1.0.1</option>
+                  </select>
+                  <label class="input-group-text">Medina</label>
+                </div>
+              </div>
+
+
+              <div class="card-footer">
+
+
+              </div>
+            </div>
+
+            <div class="card h-100 aside__card" id="lesion2">
+              <div class="card-body">
+                <a href="#" class="card-title h5">Lesion número 2</a>
+                <div class="input-group mb-3">
+                  <label class="input-group-text">Vaso</label>
+                  <select class="form-select" id="lesion2_vaso">
+                    <option selected value="0">Elegir...</option>
+                    <option value="TCI">TCI</option>
+                    <option value="DA">DA</option>
+                    <option value="Cx">Cx</option>
+                    <option value="Ramus">Ramus</option>
+                    <option value="CD">CD</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <select class="form-select" id="lesion2_segmento">
+                    <option selected value="0">Elegir...</option>
+                    <option value="ostial">Ostial</option>
+                    <option value="proximal">Proximal</option>
+                    <option value="medio">Medio</option>
+                    <option value="distal">Distal</option>
+                  </select>
+                  <label class="input-group-text">Segmento</label>
+                </div>
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text">% de obstrucción</label>
+                  <input type="number" class="form-control"
+                    id="lesion2_severidad">
+                </div>
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion2_calcio"
+                    >
+                    <option value="ninguno" selected>Ninguna</option>
+                    <option value="moderado">Moderada</option>
+                    <option value="severo">Severa</option>
+                  </select>
+                  <label class="input-group-text">Calcio</label>
+                </div>
+
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion2_bifurc"
+                    >
+                    <option value="no es bifurcación">No es bifurcación</option>
+                    <option value="1.1.1">1.1.1</option>
+                    <option value="1.1.0">1.1.0</option>
+                    <option value="1.0.1">1.0.1</option>
+                  </select>
+                  <label class="input-group-text">Medina</label>
+                </div>
+              </div>
+
+
+              <div class="card-footer">
+
+
+              </div>
+            </div>
+            <div class="card h-100 aside__card" id="lesion3">
+              <div class="card-body">
+                <a href="#" class="card-title h5">Lesion número 3</a>
+                <div class="input-group mb-3">
+                  <label class="input-group-text">Vaso</label>
+                  <select class="form-select" id="lesion3_vaso">
+                    <option selected value="0">Elegir...</option>
+                    <option value="TCI">TCI</option>
+                    <option value="DA">DA</option>
+                    <option value="Cx">Cx</option>
+                    <option value="Ramus">Ramus</option>
+                    <option value="CD">CD</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <select class="form-select" id="lesion3_segmento">
+                    <option selected value="0">Elegir...</option>
+                    <option value="ostial">Ostial</option>
+                    <option value="proximal">Proximal</option>
+                    <option value="medio">Medio</option>
+                    <option value="distal">Distal</option>
+                  </select>
+                  <label class="input-group-text">Segmento</label>
+                </div>
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text">% de obstrucción</label>
+                  <input type="number" class="form-control"
+                    id="lesion3_severidad">
+                </div>
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion3_calcio"
+                    >
+                    <option value="ninguno" selected>Ninguna</option>
+                    <option value="moderado">Moderada</option>
+                    <option value="severo">Severa</option>
+                  </select>
+                  <label class="input-group-text">Calcio</label>
+                </div>
+
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion3_bifurc"
+                    >
+                    <option value="no es bifurcación">No es bifurcación</option>
+                    <option value="1.1.1">1.1.1</option>
+                    <option value="1.1.0">1.1.0</option>
+                    <option value="1.0.1">1.0.1</option>
+                  </select>
+                  <label class="input-group-text">Medina</label>
+                </div>
+              </div>
+
+
+              <div class="card-footer">
+
+
+              </div>
+            </div>
+            <div class="card h-100 aside__card" id="lesion4">
+              <div class="card-body">
+                <a href="#" class="card-title h5">Lesion número 4</a>
+                <div class="input-group mb-3">
+                  <label class="input-group-text">Vaso</label>
+                  <select class="form-select" id="lesion4_vaso">
+                    <option selected value="0">Elegir...</option>
+                    <option value="TCI">TCI</option>
+                    <option value="DA">DA</option>
+                    <option value="Cx">Cx</option>
+                    <option value="Ramus">Ramus</option>
+                    <option value="CD">CD</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <select class="form-select" id="lesion4_segmento">
+                    <option selected value="0">Elegir...</option>
+                    <option value="ostial">Ostial</option>
+                    <option value="proximal">Proximal</option>
+                    <option value="medio">Medio</option>
+                    <option value="distal">Distal</option>
+                  </select>
+                  <label class="input-group-text">Segmento</label>
+                </div>
+
+                <div class="input-group mb-3">
+                  <label class="input-group-text">% de obstrucción</label>
+                  <input type="number" class="form-control"
+                    id="lesion4_severidad">
+                </div>
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion4_calcio"
+                    >
+                    <option value="ninguno" selected>Ninguna</option>
+                    <option value="moderado">Moderada</option>
+                    <option value="severo">Severa</option>
+                  </select>
+                  <label class="input-group-text">Calcio</label>
+                </div>
+
+
+                <div class="input-group">
+                  <select class="form-select" id="lesion4_bifurc"
+                    >
+                    <option value="no es bifurcación">No es bifurcación</option>
+                    <option value="1.1.1">1.1.1</option>
+                    <option value="1.1.0">1.1.0</option>
+                    <option value="1.0.1">1.0.1</option>
+                  </select>
+                  <label class="input-group-text">Medina</label>
+                </div>
+              </div>
+
+
+              <div class="card-footer">
+
+
+              </div>
+            </div>
+
+
+            <div class="col-12 center p-3">
+              <div class="btn btn-primary" onclick="iniciar()">Enviar</div>
+              </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <aside>
+    <h2 class="h__md">Próximos congresos</h2>
+    <div class="row row-cols-lg-1 row-cols-md-2 row-cols-sm-2 g-4">
+      <div class="col">
+        <div class="card h-100 aside__card">
+          <img src="../images/noticias/pcr.jpg" class="card-img-top aside__imagen" alt="...">
+          <div class="card-body">
+            <a href="#" class="card-title h5">PCR 2022</a>
+            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">12-04-22</small>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 aside__card">
+          <img src="../images/noticias/tct.jpg" class="card-img-top aside__imagen" alt="...">
+          <div class="card-body">
+            <a href="#" class="card-title h5">TCT 2022</a>
+            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">12-04-22</small>
+          </div>
+        </div>
+      </div>
+      <div class="col ">
+        <div class="card h-100 aside__card d-lg-none">
+          <img src="../images/noticias/london.png" class="card-img-top aside__imagen" alt="...">
+          <div class="card-body">
+            <a href="#" class="card-title h5">London Valves</a>
+            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">12-04-22</small>
+          </div>
+        </div>
+      </div>
+      <div class="col ">
+        <div class="card h-100 aside__card d-lg-none">
+          <img src="../images/noticias/esc.jpg" class="card-img-top aside__imagen" alt="...">
+          <div class="card-body">
+            <a href="#" class="card-title h5">ESC Congress 2022</a>
+            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">12-04-22</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <footer>
+    <div class="flex__footer">
+
+      <div>
+        <h3 class="h__sm">Informes de Cateterismo - Hemodinamia</h3>
+        <p class="p__md center">Sitio web de prueba</p>
+        <p class="p__md center">Email: <a
+            href="mailto:residenciahemodinamiahf@gmail.com">residenciahemodinamiahf@gmail.com</a></p>
+      </div>
+
+      <div>
+        <ul>
+          <a href="index.html">CCG + ATC</a>
+        </ul>
+        <ul>
+          <a href="./sections/ccg.html">CCG diagnóstica</a>
+        </ul>
+        <ul>
+          <a href="./sections/atc.html">Angioplastia</a>
+        </ul>
+        <ul>
+          <a href="./sections/cd.html">Cateterismo derecho</a>
+        </ul>
+        <ul>
+          <a href="./sections/tavi.html">TAVI</a>
+        </ul>
+      </div>
+
+      <div>
+
+        <form>
+          <label for="newsletter">Suscribase al newsletter:</label>
+          <input type="email" name="newsletter" placeholder="nombre@gmail.com">
+          <input type="submit" value="Suscribirse">
+        </form>
+
+        <a href="#" class="fa fa-whatsapp"></a>
+        <a href="#" class="fa fa-envelope"></a>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+
+  <script>
+    scr = "js/wow.min.js"
+  </script>
+  <script>
+    new WOW().init();
+  </script>
+  <script src="../js/main.js">
+  </script>
+</body>
+
+</html>

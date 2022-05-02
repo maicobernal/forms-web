@@ -1,0 +1,41 @@
+  /*Especialistas FlexBox*/
+  .flex__esp {
+    display: flex;
+    padding: 0;
+    margin-top: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    & div {
+      padding: 1rem 0 0 0;
+      text-align: center;
+    }
+  }
+
+  /* Cards Estudios Complementarios*/
+  .cards__estudios--img {
+    @include bordered ($radius: 8rem, $color: $color-dark, $width: 4px);
+    height: 10rem;
+    width: auto;
+    object-fit: cover;
+    padding-bottom: 0;
+    margin: 0.5rem 1rem 0 1rem !important;
+  }
+
+
+  /*Formato tablas*/
+
+  table {
+    caption-side: top;
+  }
+
+  caption {
+    ///uso de map-get
+    text-align: map-get($caption-style, align-center);
+    color: map-get($caption-style, color-text);
+    font-size: map-get($caption-style, font-h-sm);
+    padding: map-get($caption-style, space-sm 0 space-sm 0);
+    font-family: map-get($caption-style, font-type-p);
+    font-weight: map-get($caption-style, text-bolder);
+  }
