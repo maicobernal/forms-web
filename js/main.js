@@ -156,32 +156,29 @@ function iniciar() {
   }
 
 
-  const lesion1 = [];
-  lesion1.push(new Lesiones(
+  const lesiones = [];
+  lesiones.push(new Lesiones(
     document.getElementById("lesion1_vaso").value,
     document.getElementById("lesion1_severidad").value,
     document.getElementById("lesion1_segmento").value,
     document.getElementById("lesion1_calcio").value,
     document.getElementById("lesion1_bifurc").value));
 
-  const lesion2 = [];
-  lesion1.push(new Lesiones(
+  lesiones.push(new Lesiones(
     document.getElementById("lesion2_vaso").value,
     document.getElementById("lesion2_severidad").value,
     document.getElementById("lesion2_segmento").value,
     document.getElementById("lesion2_calcio").value,
     document.getElementById("lesion2_bifurc").value));
 
-  const lesion3 = [];
-  lesion1.push(new Lesiones(
+  lesiones.push(new Lesiones(
     document.getElementById("lesion3_vaso").value,
     document.getElementById("lesion3_severidad").value,
     document.getElementById("lesion3_segmento").value,
     document.getElementById("lesion3_calcio").value,
     document.getElementById("lesion3_bifurc").value));
 
-  const lesion4 = [];
-  lesion1.push(new Lesiones(
+  lesiones.push(new Lesiones(
     document.getElementById("lesion4_vaso").value,
     document.getElementById("lesion4_severidad").value,
     document.getElementById("lesion4_segmento").value,
@@ -192,5 +189,5 @@ function iniciar() {
   console.dir(datosfiliatorios);
   console.dir(acceso);
   console.dir(aspectos_tecnicos);
-  console.dir(lesion1);
+  console.dir(lesiones);
 }
