@@ -81,7 +81,7 @@
     <h2 class="h__md">Informe de cinecoronariografía</h2>
 
     <div class="container-fluid">
-      <div>
+      <div id="formulario" class="">
         <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
           <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg">
             <div class="col-md-4">
@@ -280,263 +280,26 @@
               <input type="email" class="form-control" id="complicaciones">
             </div>
 
-
-            <div class="card h-100 aside__card" id="lesion1">
-              <div class="card-body">
-                <a href="#" class="card-title h5">Lesion número 1</a>
-                <div class="input-group mb-3">
-                  <label class="input-group-text">Vaso</label>
-                  <select class="form-select" id="lesion1_vaso">
-                    <option selected value="0">Elegir...</option>
-                    <option value="TCI">TCI</option>
-                    <option value="DA">DA</option>
-                    <option value="Cx">Cx</option>
-                    <option value="Ramus">Ramus</option>
-                    <option value="CD">CD</option>
-                  </select>
-                </div>
-
-                <div class="input-group mb-3">
-                  <select class="form-select" id="lesion1_segmento">
-                    <option selected value="0">Elegir...</option>
-                    <option value="ostial">Ostial</option>
-                    <option value="proximal">Proximal</option>
-                    <option value="medio">Medio</option>
-                    <option value="distal">Distal</option>
-                  </select>
-                  <label class="input-group-text">Segmento</label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <label class="input-group-text">% de obstrucción</label>
-                  <input type="number" class="form-control"
-                    id="lesion1_severidad">
-                </div>
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion1_calcio"
-                    >
-                    <option value="ninguno" selected>Ninguna</option>
-                    <option value="moderado">Moderada</option>
-                    <option value="severo">Severa</option>
-                  </select>
-                  <label class="input-group-text">Calcio</label>
-                </div>
-
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion1_bifurc"
-                    >
-                    <option value="no es bifurcación">No es bifurcación</option>
-                    <option value="1.1.1">1.1.1</option>
-                    <option value="1.1.0">1.1.0</option>
-                    <option value="1.0.1">1.0.1</option>
-                  </select>
-                  <label class="input-group-text">Medina</label>
-                </div>
-              </div>
-
-
-              <div class="card-footer">
-
-
-              </div>
+            <div class="col-12 center p-3" id="botonesL0">
+              <div class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>
+              <div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div>
             </div>
+            
+            <div id="card1"></div>
 
-            <div class="card h-100 aside__card" id="lesion2">
-              <div class="card-body">
-                <a href="#" class="card-title h5">Lesion número 2</a>
-                <div class="input-group mb-3">
-                  <label class="input-group-text">Vaso</label>
-                  <select class="form-select" id="lesion2_vaso">
-                    <option selected value="0">Elegir...</option>
-                    <option value="TCI">TCI</option>
-                    <option value="DA">DA</option>
-                    <option value="Cx">Cx</option>
-                    <option value="Ramus">Ramus</option>
-                    <option value="CD">CD</option>
-                  </select>
-                </div>
+            <div id="card2"></div>
+            
+            <div id="card3"></div>
 
-                <div class="input-group mb-3">
-                  <select class="form-select" id="lesion2_segmento">
-                    <option selected value="0">Elegir...</option>
-                    <option value="ostial">Ostial</option>
-                    <option value="proximal">Proximal</option>
-                    <option value="medio">Medio</option>
-                    <option value="distal">Distal</option>
-                  </select>
-                  <label class="input-group-text">Segmento</label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <label class="input-group-text">% de obstrucción</label>
-                  <input type="number" class="form-control"
-                    id="lesion2_severidad">
-                </div>
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion2_calcio"
-                    >
-                    <option value="ninguno" selected>Ninguna</option>
-                    <option value="moderado">Moderada</option>
-                    <option value="severo">Severa</option>
-                  </select>
-                  <label class="input-group-text">Calcio</label>
-                </div>
-
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion2_bifurc"
-                    >
-                    <option value="no es bifurcación">No es bifurcación</option>
-                    <option value="1.1.1">1.1.1</option>
-                    <option value="1.1.0">1.1.0</option>
-                    <option value="1.0.1">1.0.1</option>
-                  </select>
-                  <label class="input-group-text">Medina</label>
-                </div>
-              </div>
-
-
-              <div class="card-footer">
-
-
-              </div>
-            </div>
-            <div class="card h-100 aside__card" id="lesion3">
-              <div class="card-body">
-                <a href="#" class="card-title h5">Lesion número 3</a>
-                <div class="input-group mb-3">
-                  <label class="input-group-text">Vaso</label>
-                  <select class="form-select" id="lesion3_vaso">
-                    <option selected value="0">Elegir...</option>
-                    <option value="TCI">TCI</option>
-                    <option value="DA">DA</option>
-                    <option value="Cx">Cx</option>
-                    <option value="Ramus">Ramus</option>
-                    <option value="CD">CD</option>
-                  </select>
-                </div>
-
-                <div class="input-group mb-3">
-                  <select class="form-select" id="lesion3_segmento">
-                    <option selected value="0">Elegir...</option>
-                    <option value="ostial">Ostial</option>
-                    <option value="proximal">Proximal</option>
-                    <option value="medio">Medio</option>
-                    <option value="distal">Distal</option>
-                  </select>
-                  <label class="input-group-text">Segmento</label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <label class="input-group-text">% de obstrucción</label>
-                  <input type="number" class="form-control"
-                    id="lesion3_severidad">
-                </div>
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion3_calcio"
-                    >
-                    <option value="ninguno" selected>Ninguna</option>
-                    <option value="moderado">Moderada</option>
-                    <option value="severo">Severa</option>
-                  </select>
-                  <label class="input-group-text">Calcio</label>
-                </div>
-
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion3_bifurc"
-                    >
-                    <option value="no es bifurcación">No es bifurcación</option>
-                    <option value="1.1.1">1.1.1</option>
-                    <option value="1.1.0">1.1.0</option>
-                    <option value="1.0.1">1.0.1</option>
-                  </select>
-                  <label class="input-group-text">Medina</label>
-                </div>
-              </div>
-
-
-              <div class="card-footer">
-
-
-              </div>
-            </div>
-            <div class="card h-100 aside__card" id="lesion4">
-              <div class="card-body">
-                <a href="#" class="card-title h5">Lesion número 4</a>
-                <div class="input-group mb-3">
-                  <label class="input-group-text">Vaso</label>
-                  <select class="form-select" id="lesion4_vaso">
-                    <option selected value="0">Elegir...</option>
-                    <option value="TCI">TCI</option>
-                    <option value="DA">DA</option>
-                    <option value="Cx">Cx</option>
-                    <option value="Ramus">Ramus</option>
-                    <option value="CD">CD</option>
-                  </select>
-                </div>
-
-                <div class="input-group mb-3">
-                  <select class="form-select" id="lesion4_segmento">
-                    <option selected value="0">Elegir...</option>
-                    <option value="ostial">Ostial</option>
-                    <option value="proximal">Proximal</option>
-                    <option value="medio">Medio</option>
-                    <option value="distal">Distal</option>
-                  </select>
-                  <label class="input-group-text">Segmento</label>
-                </div>
-
-                <div class="input-group mb-3">
-                  <label class="input-group-text">% de obstrucción</label>
-                  <input type="number" class="form-control"
-                    id="lesion4_severidad">
-                </div>
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion4_calcio"
-                    >
-                    <option value="ninguno" selected>Ninguna</option>
-                    <option value="moderado">Moderada</option>
-                    <option value="severo">Severa</option>
-                  </select>
-                  <label class="input-group-text">Calcio</label>
-                </div>
-
-
-                <div class="input-group">
-                  <select class="form-select" id="lesion4_bifurc"
-                    >
-                    <option value="no es bifurcación">No es bifurcación</option>
-                    <option value="1.1.1">1.1.1</option>
-                    <option value="1.1.0">1.1.0</option>
-                    <option value="1.0.1">1.0.1</option>
-                  </select>
-                  <label class="input-group-text">Medina</label>
-                </div>
-              </div>
-
-
-              <div class="card-footer">
-
-
-              </div>
-            </div>
-
-
-            <div class="col-12 center p-3">
-              <div class="btn btn-primary" onclick="iniciar()">Enviar</div>
-              </div>
+            <div id="card4"></div>
+            
           </form>
         </div>
 
       </div>
     </div>
-
+<div id="resultados" class="d-block center">
+</div>
   </main>
 
   <aside>
