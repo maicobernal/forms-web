@@ -256,7 +256,7 @@ function iniciar() {
       return compresion_clean;
     }
   }
-
+  let lesiones = []; //Reseteo por si quiero volver a ejecutar la funcion
   for (i = 1; i <= nroLesiones; i++) {
     if (document.getElementById(`lesion${i}`) != undefined) {
       lesiones.push(new Lesiones(
@@ -341,7 +341,7 @@ function imprimir(datosfilAll, lesiones) {
     let str = "";
     for (let i = 0; i < data2.length; i++) {
       str += "<tr>";
-      str += "<td>" + "Lesión Nº " + [i] + "</td>";
+      str += "<td>" + "Lesión Nº " + [i+1] + "</td>";
       str += "<td>" + data2[i].vaso + "</td>";
       str += "<td>" + data2[i].segmento + "</td>";
       str += "<td>" + data2[i].obstruccion + "</td>";
