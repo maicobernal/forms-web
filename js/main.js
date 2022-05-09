@@ -1,13 +1,37 @@
 //Informe CCG
 
+document.addEventListener('DOMContentLoaded', () => {
+  mostrarBtn();
+})
+
+const canBtn = document.querySelector("#botones");
+const btnAddLesion = document.createElement("div");
+const btnCAN = document.createElement("div");
+const btnSummary = document.createElement("div");
+btnAddLesion.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div>`);
+btnCAN.innerHTML = (`<div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
+btnSummary.innerHTML = (`<div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
+
+
+const contenedorLesiones = document.querySelector("#lesiones_cards");
+let nroLesiones = 0;
+
+function mostrarBtn() {
+  canBtn.appendChild(btnAddLesion)
+  canBtn.appendChild(btnCAN)
+}
 
 function agregarLesion() {
-  document.getElementById("card1").innerHTML = (`<div class="card h-100 aside__card" id="lesion1">
+  const divLesion = document.createElement("div");
+  nroLesiones = nroLesiones + 1;
+  for (i = nroLesiones; i <= nroLesiones; i++) {
+    divLesion.classList.add(`card${i}`);
+    divLesion.innerHTML = (`<div class="card h-100 aside__card" id="lesion${i}">
   <div class="card-body">
-    <a href="#" class="card-title h5">Lesion número 1</a>
+    <p class="card-title p__md--strong center">Lesión Nº ${i}</p>
     <div class="input-group mb-3">
       <label class="input-group-text">Vaso</label>
-      <select class="form-select" id="lesion1_vaso">
+      <select class="form-select" id="lesion${i}_vaso">
         <option selected value="0">Elegir...</option>
         <option value="TCI">TCI</option>
         <option value="DA">DA</option>
@@ -18,7 +42,7 @@ function agregarLesion() {
     </div>
 
     <div class="input-group mb-3">
-      <select class="form-select" id="lesion1_segmento">
+      <select class="form-select" id="lesion${i}_segmento">
         <option selected value="0">Elegir...</option>
         <option value="ostial">Ostial</option>
         <option value="proximal">Proximal</option>
@@ -31,11 +55,11 @@ function agregarLesion() {
     <div class="input-group mb-3">
       <label class="input-group-text">% de obstrucción</label>
       <input type="number" class="form-control"
-        id="lesion1_severidad">
+        id="lesion${i}_severidad">
     </div>
 
     <div class="input-group">
-      <select class="form-select" id="lesion1_calcio"
+      <select class="form-select" id="lesion${i}_calcio"
         >
         <option value="ninguno" selected>Ninguna</option>
         <option value="moderado">Moderada</option>
@@ -46,7 +70,7 @@ function agregarLesion() {
 
 
     <div class="input-group">
-      <select class="form-select" id="lesion1_bifurc"
+      <select class="form-select" id="lesion${i}_bifurc"
         >
         <option value="no es bifurcación">No es bifurcación</option>
         <option value="1.1.1">1.1.1</option>
@@ -56,228 +80,41 @@ function agregarLesion() {
       <label class="input-group-text">Medina</label>
     </div>
   </div>
-
-
   <div class="card-footer">
-
-
   </div>
 </div>
-<div class="col-12 center p-3" id="botonesL1">
-<div class="btn btn-primary" onclick="iniciar()">Finalizar</div>
-<div class="btn btn-secondary" onclick="agregarLesion2()">Agregar lesión</div>
+<div class="col-12 center p-3" id="botonesL${i}">
 </div>
 `)
-  document.getElementById("botonesL0").setAttribute('class', `d-none`);
-  document.getElementById("botonesL0").setAttribute('class', `d-none`);
-
+  }
+  contenedorLesiones.appendChild(divLesion);
+  cambiarBtn();
+  //contadorLesiones(nroLesiones);
 }
 
-function agregarLesion2() {
-  document.getElementById("card2").innerHTML = (`<div class="card h-100 aside__card" id="lesion2">
-<div class="card-body">
-  <a href="#" class="card-title h5">Lesion número 2</a>
-  <div class="input-group mb-3">
-    <label class="input-group-text">Vaso</label>
-    <select class="form-select" id="lesion2_vaso">
-      <option selected value="0">Elegir...</option>
-      <option value="TCI">TCI</option>
-      <option value="DA">DA</option>
-      <option value="Cx">Cx</option>
-      <option value="Ramus">Ramus</option>
-      <option value="CD">CD</option>
-    </select>
-  </div>
-
-  <div class="input-group mb-3">
-    <select class="form-select" id="lesion2_segmento">
-      <option selected value="0">Elegir...</option>
-      <option value="ostial">Ostial</option>
-      <option value="proximal">Proximal</option>
-      <option value="medio">Medio</option>
-      <option value="distal">Distal</option>
-    </select>
-    <label class="input-group-text">Segmento</label>
-  </div>
-
-  <div class="input-group mb-3">
-    <label class="input-group-text">% de obstrucción</label>
-    <input type="number" class="form-control"
-      id="lesion2_severidad">
-  </div>
-
-  <div class="input-group">
-    <select class="form-select" id="lesion2_calcio"
-      >
-      <option value="ninguno" selected>Ninguna</option>
-      <option value="moderado">Moderada</option>
-      <option value="severo">Severa</option>
-    </select>
-    <label class="input-group-text">Calcio</label>
-  </div>
-
-
-  <div class="input-group">
-    <select class="form-select" id="lesion2_bifurc"
-      >
-      <option value="no es bifurcación">No es bifurcación</option>
-      <option value="1.1.1">1.1.1</option>
-      <option value="1.1.0">1.1.0</option>
-      <option value="1.0.1">1.0.1</option>
-    </select>
-    <label class="input-group-text">Medina</label>
-  </div>
-</div>
-
-
-<div class="card-footer">
-
-
-</div>
-</div>
-<div class="col-12 center p-3" id="botonesL2">
-<div class="btn btn-primary" onclick="iniciar()">Finalizar</div>
-<div class="btn btn-secondary" onclick="agregarLesion3()">Agregar lesión</div>
-</div>`)
-  document.getElementById("botonesL1").setAttribute('class', `d-none`);
+function cambiarBtn() {
+  if (nroLesiones > 0) {
+    canBtn.removeChild(btnCAN);
+    canBtn.appendChild(btnSummary);
+  };
 }
 
-function agregarLesion3() {
-  document.getElementById("card3").innerHTML = (`<div class="card h-100 aside__card" id="lesion3">
-<div class="card-body">
-  <a href="#" class="card-title h5">Lesion número 3</a>
-  <div class="input-group mb-3">
-    <label class="input-group-text">Vaso</label>
-    <select class="form-select" id="lesion3_vaso">
-      <option selected value="0">Elegir...</option>
-      <option value="TCI">TCI</option>
-      <option value="DA">DA</option>
-      <option value="Cx">Cx</option>
-      <option value="Ramus">Ramus</option>
-      <option value="CD">CD</option>
-    </select>
-  </div>
 
-  <div class="input-group mb-3">
-    <select class="form-select" id="lesion3_segmento">
-      <option selected value="0">Elegir...</option>
-      <option value="ostial">Ostial</option>
-      <option value="proximal">Proximal</option>
-      <option value="medio">Medio</option>
-      <option value="distal">Distal</option>
-    </select>
-    <label class="input-group-text">Segmento</label>
-  </div>
+let datosfiliatorios = {};
+let acceso = {};
+let aspectos_tecnicos = {};
 
-  <div class="input-group mb-3">
-    <label class="input-group-text">% de obstrucción</label>
-    <input type="number" class="form-control"
-      id="lesion3_severidad">
-  </div>
-
-  <div class="input-group">
-    <select class="form-select" id="lesion3_calcio"
-      >
-      <option value="ninguno" selected>Ninguna</option>
-      <option value="moderado">Moderada</option>
-      <option value="severo">Severa</option>
-    </select>
-    <label class="input-group-text">Calcio</label>
-  </div>
-
-
-  <div class="input-group">
-    <select class="form-select" id="lesion3_bifurc"
-      >
-      <option value="no es bifurcación">No es bifurcación</option>
-      <option value="1.1.1">1.1.1</option>
-      <option value="1.1.0">1.1.0</option>
-      <option value="1.0.1">1.0.1</option>
-    </select>
-    <label class="input-group-text">Medina</label>
-  </div>
-</div>
-
-
-<div class="card-footer">
-
-
-</div>
-</div>
-<div class="col-12 center p-3" id="botonesL3">
-<div class="btn btn-primary" onclick="iniciar()">Finalizar</div>
-<div class="btn btn-secondary" onclick="agregarLesion4()">Agregar lesión</div>
-</div>`)
-  document.getElementById("botonesL2").setAttribute('class', `d-none`);
+class Lesiones {
+  constructor(vaso, segmento, obstruccion, calcio, bifurcacion) {
+    this.vaso = vaso;
+    this.segmento = segmento;
+    this.obstruccion = obstruccion;
+    this.calcio = calcio;
+    this.bifurcacion = bifurcacion;
+  }
 }
 
-function agregarLesion4() {
-  document.getElementById("card4").innerHTML = (`<div class="card h-100 aside__card" id="lesion4">
-<div class="card-body">
-  <a href="#" class="card-title h5">Lesion número 4</a>
-  <div class="input-group mb-3">
-    <label class="input-group-text">Vaso</label>
-    <select class="form-select" id="lesion4_vaso">
-      <option selected value="0">Elegir...</option>
-      <option value="TCI">TCI</option>
-      <option value="DA">DA</option>
-      <option value="Cx">Cx</option>
-      <option value="Ramus">Ramus</option>
-      <option value="CD">CD</option>
-    </select>
-  </div>
-
-  <div class="input-group mb-3">
-    <select class="form-select" id="lesion4_segmento">
-      <option selected value="0">Elegir...</option>
-      <option value="ostial">Ostial</option>
-      <option value="proximal">Proximal</option>
-      <option value="medio">Medio</option>
-      <option value="distal">Distal</option>
-    </select>
-    <label class="input-group-text">Segmento</label>
-  </div>
-
-  <div class="input-group mb-3">
-    <label class="input-group-text">% de obstrucción</label>
-    <input type="number" class="form-control"
-      id="lesion4_severidad">
-  </div>
-
-  <div class="input-group">
-    <select class="form-select" id="lesion4_calcio"
-      >
-      <option value="ninguno" selected>Ninguna</option>
-      <option value="moderado">Moderada</option>
-      <option value="severo">Severa</option>
-    </select>
-    <label class="input-group-text">Calcio</label>
-  </div>
-
-
-  <div class="input-group">
-    <select class="form-select" id="lesion4_bifurc"
-      >
-      <option value="no es bifurcación">No es bifurcación</option>
-      <option value="1.1.1">1.1.1</option>
-      <option value="1.1.0">1.1.0</option>
-      <option value="1.0.1">1.0.1</option>
-    </select>
-    <label class="input-group-text">Medina</label>
-  </div>
-</div>
-
-
-<div class="card-footer">
-
-
-</div>
-</div>
-<div class="col-12 center p-3" id="botonesL4">
-<div class="btn btn-primary" onclick="iniciar()">Finalizar</div>
-</div>`)
-  document.getElementById("botonesL3").setAttribute('class', `d-none`);
-}
+let lesiones = [];
 
 function iniciar() {
 
@@ -420,279 +257,104 @@ function iniciar() {
     }
   }
 
-  class Lesiones {
-    constructor(vaso, segmento, obstruccion, calcio, bifurcacion) {
-      this.vaso = vaso;
-      this.segmento = segmento;
-      this.obstruccion = obstruccion;
-      this.calcio = calcio;
-      this.bifurcacion = bifurcacion;
+  for (i = 1; i <= nroLesiones; i++) {
+    if (document.getElementById(`lesion${i}`) != undefined) {
+      lesiones.push(new Lesiones(
+        document.getElementById(`lesion${i}_vaso`).value,
+        document.getElementById(`lesion${i}_segmento`).value,
+        document.getElementById(`lesion${i}_severidad`).value,
+        document.getElementById(`lesion${i}_calcio`).value,
+        document.getElementById(`lesion${i}_bifurc`).value));
     }
   }
 
-  const lesiones = [];
-  if (document.getElementById("lesion1") != undefined){
-    lesiones.push(new Lesiones(
-    document.getElementById("lesion1_vaso").value,
-    document.getElementById("lesion1_severidad").value,
-    document.getElementById("lesion1_segmento").value,
-    document.getElementById("lesion1_calcio").value,
-    document.getElementById("lesion1_bifurc").value));}
-    else {alert("Sus coronarias son normales, felicidades")}
+  datosfilAll = {
+    ...datosfiliatorios,
+    ...acceso,
+    ...aspectos_tecnicos
+  }
+  imprimir(datosfilAll, lesiones);
 
-    if (document.getElementById("lesion2") != undefined){
-    lesiones.push(new Lesiones(
-    document.getElementById("lesion2_vaso").value,
-    document.getElementById("lesion2_severidad").value,
-    document.getElementById("lesion2_segmento").value,
-    document.getElementById("lesion2_calcio").value,
-    document.getElementById("lesion2_bifurc").value));}
-
-    if (document.getElementById("lesion3") != undefined){
-    lesiones.push(new Lesiones(
-    document.getElementById("lesion3_vaso").value,
-    document.getElementById("lesion3_severidad").value,
-    document.getElementById("lesion3_segmento").value,
-    document.getElementById("lesion3_calcio").value,
-    document.getElementById("lesion3_bifurc").value));}
-
-    if (document.getElementById("lesion4") != undefined){
-    lesiones.push(new Lesiones(
-    document.getElementById("lesion4_vaso").value,
-    document.getElementById("lesion4_severidad").value,
-    document.getElementById("lesion4_segmento").value,
-    document.getElementById("lesion4_calcio").value,
-    document.getElementById("lesion4_bifurc").value));}
+}
 
 
-  console.dir(datosfiliatorios);
-  console.dir(acceso);
-  console.dir(aspectos_tecnicos);
-  console.dir(lesiones);
+let nombres = {nombre: "Nombre y apellido", nroproc: "Nro de procedimiento", fecha: "Fecha del procedimiento", dni: "DNI o documento", medsol: "Médico o centro solicitante", arteria: "Acceso arterial utilizado", posicion: "Localización del acceso", french: "Tamaño del introductor", longitud: "Largo del introductor", conversion: "¿Requirió conversión?", cateteres: "Catéteres utilizados", heparina: "Dosis de heparina en UI", rayos: "Duración de radioscopia", mgy: "Dosis de kerma en el aire", operadores: "Operadores", compresion: "Retiro del introductor", complicaciones: "Complicaciones durante el procedimiento", contraste: "Dosis de contraste en ml"}
+let resultados = document.querySelector("#resultados");
 
-    document.getElementById("resultados").innerHTML = (`<h2 class="h__md">Resultados preliminares del informe</h2>
+function imprimir(datosfilAll, lesiones) {
+  resultados.innerHTML = (
+    `<div><h2 class="h__md">Resultados preliminares del informe</h2>
     <table class="table table-sm table-hover table-striped m-3 p-3">
-        <thead class="t-head-light p__md--strong">
-            <tr>
-                <td>
+        <thead class="t-head-light p__md--strong center">
+                 <td>
                     Variable
                 </td>
                 <td>
-                    Valor ingresado
+                    Dato ingresado
                 </td>
-            </tr>
         </thead>
-        <tbody class="p__md--strong">
-            <tr>
-                <td>
-                    Nombre y apellido
-                </td>
-                <td id="0">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Número de procedimiento
-                </td>
-                <td id="1">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Fecha del procedimiento
-                </td>
-                <td id="2">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    DNI
-                </td>
-                <td id="3">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Médico solicitante
-                </td>
-                <td id="4">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Acceso
-                </td>
-                <td id="5">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Catéteres utilizados
-                </td>
-                <td id="6">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Dosis de heparina
-                </td>
-                <td id="7">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Tiempo de radioscopia
-                </td>
-                <td id="8">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Dosis de mGy
-                </td>
-                <td id="9">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Cantidad de contraste
-                </td>
-                <td id="10">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Operadores
-                </td>
-                <td id="11">
-    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Compresión
-                </td>
-                <td id="12">
-    
-                </td>
-            </tr>
+        <tbody class="p__md--strong center" id="tabla_nombres">
         </tbody>
     </table>
-    
+</div>
+<div id="tablas_preanalisis">
+</div>`)
+  let data1 = datosfilAll
+  let str0 = "";
+  for (dato in data1) {
+    str0 += "<tr>";
+    str0 += "<td>" + nombres[dato] + "</td>";
+    str0 += "<td>" + String(data1[dato]).toUpperCase() + "</td>";
+    str0 += "</tr>";
+  }
+  document.querySelector('#tabla_nombres').innerHTML = str0;
+  if (nroLesiones > 0) {
+    document.querySelector("#tablas_preanalisis").innerHTML = (
+      `<div><h2 class="h__md">Lesiones ingresadas</h2>
     <table class="table table-sm table-hover table-striped m-3 p-3">
-        <thead class="t-head-light p__md--strong">
-            <tr>
-                <td>
-                    Variable
+        <thead class="t-head-light p__md--strong center">
+                 <td>
+                    Lesión Nº
                 </td>
                 <td>
-                    Lesión #1
+                    Vaso
                 </td>
                 <td>
-                    Lesión #2
+                    Segmento
                 </td>
                 <td>
-                    Lesión #3
+                    % de obstrucción
                 </td>
-                <td>
-                    Lesión #4
-                </td>
-            </tr>
-        </thead>
-        <tbody class="p__md--strong">
-            <tr>
-                <td>
-    Arteria            </td>
-                <td id="a1"></td>
-                <td id="a2"></td>
-                <td id="a3"></td>
-                <td id="a4"></td>
-            </tr>
-            <tr>
-                <td>
-    Segmento            </td>
-    <td id="b1"></td>
-    <td id="b2"></td>
-    <td id="b3"></td>
-    <td id="b4"></td>
-            </tr>
-            <tr>
-                <td>
-                    % obstrucción
-                </td>
-                <td id="c1"></td>
-                <td id="c2"></td>
-                <td id="c3"></td>
-                <td id="c4"></td>
-            </tr>
-            <tr>
                 <td>
                     Calcificación
                 </td>
-                <td id="d1"></td>
-                <td id="d2"></td>
-                <td id="d3"></td>
-                <td id="d4"></td>
-            </tr>
-            <tr>
                 <td>
                     Bifurcación
                 </td>
-                <td id="e1"></td>
-                <td id="e2"></td>
-                <td id="e3"></td>
-                <td id="e4"></td>
-            </tr>
-            
+        </thead>
+        <tbody class="p__md--strong center" id="tabla_lesiones">
         </tbody>
     </table>
-<div class="col-12 center p-3" id="revision">
-<div class="btn btn-primary">Finalizar y enviar</div>
-<div class="btn btn-secondary">Borrar todo</div>
 </div>`)
-document.getElementById(0).innerHTML = datosfiliatorios.nombre;
-document.getElementById(1).innerHTML = datosfiliatorios.nroproc;
-document.getElementById(2).innerHTML = datosfiliatorios.fecha;
-document.getElementById(3).innerHTML = datosfiliatorios.dni;
-document.getElementById(4).innerHTML = datosfiliatorios.medsol;
-document.getElementById(5).innerHTML = acceso.arteria + " " + acceso.posicion + " " + acceso.french;
-document.getElementById(6).innerHTML = acceso.cateteres;
-document.getElementById(7).innerHTML = aspectos_tecnicos.heparina;
-document.getElementById(8).innerHTML = aspectos_tecnicos.rayos;
-document.getElementById(9).innerHTML = aspectos_tecnicos.mgy;
-document.getElementById(10).innerHTML = aspectos_tecnicos.contraste;
-document.getElementById(11).innerHTML = aspectos_tecnicos.operadores;
-document.getElementById(12).innerHTML = aspectos_tecnicos.compresion;
-document.getElementById("a1").innerHTML = lesiones[0].vaso;
-document.getElementById("b1").innerHTML = lesiones[0].segmento;
-document.getElementById("c1").innerHTML = lesiones[0].obstruccion;
-document.getElementById("d1").innerHTML = lesiones[0].calcio;
-document.getElementById("e1").innerHTML = lesiones[0].bifurcacion;
-document.getElementById("a2").innerHTML = lesiones[1].vaso;
-document.getElementById("b2").innerHTML = lesiones[1].segmento;
-document.getElementById("c2").innerHTML = lesiones[1].obstruccion;
-document.getElementById("d2").innerHTML = lesiones[1].calcio;
-document.getElementById("e2").innerHTML = lesiones[1].bifurcacion;
-document.getElementById("a3").innerHTML = lesiones[2].vaso;
-document.getElementById("b3").innerHTML = lesiones[2].segmento;
-document.getElementById("c3").innerHTML = lesiones[2].obstruccion;
-document.getElementById("d3").innerHTML = lesiones[2].calcio;
-document.getElementById("e3").innerHTML = lesiones[2].bifurcacion;
-document.getElementById("a4").innerHTML = lesiones[3].vaso;
-document.getElementById("b4").innerHTML = lesiones[3].segmento;
-document.getElementById("c4").innerHTML = lesiones[3].obstruccion;
-document.getElementById("d4").innerHTML = lesiones[3].calcio;
-document.getElementById("e4").innerHTML = lesiones[3].bifurcacion;
 
+    let data2 = lesiones
+    let str = "";
+    for (let i = 0; i < data2.length; i++) {
+      str += "<tr>";
+      str += "<td>" + "Lesión Nº " + [i] + "</td>";
+      str += "<td>" + data2[i].vaso + "</td>";
+      str += "<td>" + data2[i].segmento + "</td>";
+      str += "<td>" + data2[i].obstruccion + "</td>";
+      str += "<td>" + data2[i].calcio + "</td>";
+      str += "<td>" + data2[i].bifurcacion + "</td>";
+      str += "</tr>";
     }
+    document.querySelector('#tabla_lesiones').innerHTML = str;
+  }
+
+  let resultadosBtn = document.createElement("div");
+  resultadosBtn.innerHTML = (`<div class="btn btn-primary" onclick=submit()>Finalizar y enviar</div>
+<div class="btn btn-secondary" onclick=reset()>Borrar todo</div>
+`);
+  resultados.appendChild(resultadosBtn);
+}
