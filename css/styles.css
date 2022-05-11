@@ -346,6 +346,9 @@ input {
     width: 300px;
     height: 225px; } }
 
+.btn__cerrar {
+  float: right; }
+
 /*Responsive layout SMALL celulares medianos o portrait landscape*/
 @media screen and (min-width: 576px) and (max-width: 767.98px) {
   .flex__footer {

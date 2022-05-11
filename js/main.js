@@ -2,24 +2,19 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   mostrarBtn();
+  chequearEntry();
 })
 
-const canBtn = document.querySelector("#botones");
-const btnAddLesion = document.createElement("div");
-const btnCAN = document.createElement("div");
-const btnSummary = document.createElement("div");
-btnAddLesion.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div>`);
-btnCAN.innerHTML = (`<div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
-btnSummary.innerHTML = (`<div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
-
+const botonera = document.querySelector("#botones");
 
 const contenedorLesiones = document.querySelector("#lesiones_cards");
+
 let nroLesiones = 0;
 
 function mostrarBtn() {
-  canBtn.appendChild(btnAddLesion)
-  canBtn.appendChild(btnCAN)
+  botonera.innerHTML(`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
 }
+
 
 function agregarLesion() {
   const divLesion = document.createElement("div");
@@ -28,7 +23,7 @@ function agregarLesion() {
     divLesion.classList.add(`card${i}`);
     divLesion.innerHTML = (`<div class="card h-100 aside__card" id="lesion${i}">
   <div class="card-body">
-    <p class="card-title p__md--strong center">Lesión Nº ${i}</p>
+    <p class="card-title p__md--strong center" id="lesiontitle${i}">Lesión Nº ${i} <a id = "borrar${i}" class = "btn__cerrar" onclick = borrarLesion(${i}) > ❌ </a></p> 
     <div class="input-group mb-3">
       <label class="input-group-text">Vaso</label>
       <select class="form-select" id="lesion${i}_vaso">
@@ -89,15 +84,59 @@ function agregarLesion() {
   }
   contenedorLesiones.appendChild(divLesion);
   cambiarBtn();
-  //contadorLesiones(nroLesiones);
 }
+
+function borrarLesion(e) {
+  let posicion = e;
+  const toErase = document.querySelector(`.card${posicion}`);
+  toErase.remove();
+  posicion = posicion + 1;
+  for (i = posicion; i <= nroLesiones; i++) {
+    document.querySelector(`.card${i}`).className = `card${i-1}`;
+    document.querySelector(`#lesion${i}`).id = `lesion${i-1}`;
+    document.querySelector(`#lesiontitle${i}`).innerHTML = `Lesión Nº ${i-1} <a id = "borrar${i-1}" class = "btn__cerrar" onclick = borrarLesion(${i-1}) > ❌ </a>`;
+    document.querySelector(`#lesiontitle${i}`).id = `lesiontitle${i-1}`;
+    document.querySelector(`#lesion${i}_vaso`).id = `#lesion${i-1}_vaso`;
+    document.querySelector(`#lesion${i}_segmento`).id = `#lesion${i-1}_segmento`;
+    document.querySelector(`#lesion${i}_severidad`).id = `#lesion${i-1}_severidad`;
+    document.querySelector(`#lesion${i}_calcio`).id = `#lesion${i-1}_calcio`;
+    document.querySelector(`#lesion${i}_bifurc`).id = `#lesion${i-1}_bifurc`;
+  }
+  nroLesiones = nroLesiones - 1;
+}
+
 
 function cambiarBtn() {
   if (nroLesiones > 0) {
-    canBtn.removeChild(btnCAN);
-    canBtn.appendChild(btnSummary);
-  };
+    botonera.innerHTML(`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
+  }
 }
+
+function chequearEntry() {
+  let datosfilAll;
+  let lesiones;
+  let datosfilAllStored = JSON.stringify(localStorage.getItem("datosfillAllJSON"));
+  let lesionesStored = JSON.stringify(localStorage.getItem("lesionesJSON"));
+  if (datosfilAllStored) {
+    Swal.fire({
+      title: '¿Desea utilizar datos de la sesión previa?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Utilizar',
+      denyButtonText: `No utilizar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        datosfilAll = datosfilAllStored;
+        lesiones = lesionesStored;
+      } else if (result.isDenied) {
+        localStorage.clear();
+        Swal.fire('Ingrese nuevos datos', '', 'info')
+      }
+    })
+
+  }
+}
+
 
 
 let datosfiliatorios = {};
@@ -105,7 +144,8 @@ let acceso = {};
 let aspectos_tecnicos = {};
 
 class Lesiones {
-  constructor(vaso, segmento, obstruccion, calcio, bifurcacion) {
+  constructor(id, vaso, segmento, obstruccion, calcio, bifurcacion) {
+    this.id = id;
     this.vaso = vaso;
     this.segmento = segmento;
     this.obstruccion = obstruccion;
@@ -260,6 +300,7 @@ function iniciar() {
   for (i = 1; i <= nroLesiones; i++) {
     if (document.getElementById(`lesion${i}`) != undefined) {
       lesiones.push(new Lesiones(
+        Date.now(),
         document.getElementById(`lesion${i}_vaso`).value,
         document.getElementById(`lesion${i}_segmento`).value,
         document.getElementById(`lesion${i}_severidad`).value,
@@ -273,12 +314,36 @@ function iniciar() {
     ...acceso,
     ...aspectos_tecnicos
   }
+
+  let datosfillAllJSON = JSON.stringify(datosfilAll);
+  localStorage.setItem("datosfillAll", datosfillAllJSON);
+  let lesionesJSON = JSON.stringify(lesiones);
+  localStorage.setItem("lesiones", lesionesJSON);
   imprimir(datosfilAll, lesiones);
 
 }
 
 
-let nombres = {nombre: "Nombre y apellido", nroproc: "Nro de procedimiento", fecha: "Fecha del procedimiento", dni: "DNI o documento", medsol: "Médico o centro solicitante", arteria: "Acceso arterial utilizado", posicion: "Localización del acceso", french: "Tamaño del introductor", longitud: "Largo del introductor", conversion: "¿Requirió conversión?", cateteres: "Catéteres utilizados", heparina: "Dosis de heparina en UI", rayos: "Duración de radioscopia", mgy: "Dosis de kerma en el aire", operadores: "Operadores", compresion: "Retiro del introductor", complicaciones: "Complicaciones durante el procedimiento", contraste: "Dosis de contraste en ml"}
+let nombres = {
+  nombre: "Nombre y apellido",
+  nroproc: "Nro de procedimiento",
+  fecha: "Fecha del procedimiento",
+  dni: "DNI o documento",
+  medsol: "Médico o centro solicitante",
+  arteria: "Acceso arterial utilizado",
+  posicion: "Localización del acceso",
+  french: "Tamaño del introductor",
+  longitud: "Largo del introductor",
+  conversion: "¿Requirió conversión?",
+  cateteres: "Catéteres utilizados",
+  heparina: "Dosis de heparina en UI",
+  rayos: "Duración de radioscopia",
+  mgy: "Dosis de kerma en el aire",
+  operadores: "Operadores",
+  compresion: "Retiro del introductor",
+  complicaciones: "Complicaciones durante el procedimiento",
+  contraste: "Dosis de contraste en ml"
+}
 let resultados = document.querySelector("#resultados");
 
 function imprimir(datosfilAll, lesiones) {
@@ -341,7 +406,7 @@ function imprimir(datosfilAll, lesiones) {
     let str = "";
     for (let i = 0; i < data2.length; i++) {
       str += "<tr>";
-      str += "<td>" + "Lesión Nº " + [i+1] + "</td>";
+      str += "<td>" + "Lesión Nº " + [i + 1] + "</td>";
       str += "<td>" + data2[i].vaso + "</td>";
       str += "<td>" + data2[i].segmento + "</td>";
       str += "<td>" + data2[i].obstruccion + "</td>";

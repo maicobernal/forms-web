@@ -24,7 +24,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -86,7 +86,7 @@
           <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg">
             <div class="col-md-4">
               <label class="form-label form__recetas">Nombre y apellido</label>
-              <input type="text"  pattern="[A-Za-z]{3}" class="form-control" id="name_form">
+              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="name_form">
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas">Nro de procedimiento</label>
@@ -107,19 +107,19 @@
             <div class="row g-3 justify-content-evenly">
               <div class="col-md-4">
                 <label class="form-label form__recetas">Acceso</label>
-                <input class="form-check-input" type="radio"id="acceso_rad" value="radial">
+                <input class="form-check-input" type="radio" id="acceso_rad" value="radial">
                 <label class="form-check-label">
                   Radial
                 </label>
-                <input class="form-check-input" type="radio"id="acceso_fem" value="femoral">
+                <input class="form-check-input" type="radio" id="acceso_fem" value="femoral">
                 <label class="form-check-label">
                   Femoral
                 </label>
-                <input class="form-check-input" type="radio"id="acceso_cub" value="cubital">
+                <input class="form-check-input" type="radio" id="acceso_cub" value="cubital">
                 <label class="form-check-label">
                   Cubital
                 </label>
-                <input class="form-check-input" type="radio"id="acceso_rad_dist" value="radial_dist">
+                <input class="form-check-input" type="radio" id="acceso_rad_dist" value="radial_dist">
                 <label class="form-check-label">
                   Radial distal
                 </label>
@@ -127,26 +127,26 @@
 
               <div class="col-md-4">
                 <label class="form-label form__recetas">Localización</label>
-                <input class="form-check-input" type="radio"id="acceso_der" value="derecho">
+                <input class="form-check-input" type="radio" id="acceso_der" value="derecho">
                 <label class="form-check-label">
                   Derecho
                 </label>
-                <input class="form-check-input" type="radio"id="acceso_izq" value="izquierdo">
+                <input class="form-check-input" type="radio" id="acceso_izq" value="izquierdo">
                 <label class="form-check-label">
                   Izquierdo
                 </label>
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Tamaño introductor</label>
-                <input class="form-check-input" type="radio"id="5fr_form" value="5fr">
+                <input class="form-check-input" type="radio" id="5fr_form" value="5fr">
                 <label class="form-check-label">
                   5 French
                 </label>
-                <input class="form-check-input" type="radio"id="6fr_form" value="6fr">
+                <input class="form-check-input" type="radio" id="6fr_form" value="6fr">
                 <label class="form-check-label">
                   6 French
                 </label>
-                <input class="form-check-input" type="radio"id="7fr_form" value="7fr">
+                <input class="form-check-input" type="radio" id="7fr_form" value="7fr">
                 <label class="form-check-label">
                   7 French
                 </label>
@@ -154,11 +154,11 @@
 
               <div class="col-md-4">
                 <label class="form-label form__recetas">Tipo introductor</label>
-                <input class="form-check-input" type="radio"id="intro_corto" value="corto">
+                <input class="form-check-input" type="radio" id="intro_corto" value="corto">
                 <label class="form-check-label">
                   Corto
                 </label>
-                <input class="form-check-input" type="radio"id="intro_largo" value="largo">
+                <input class="form-check-input" type="radio" id="intro_largo" value="largo">
                 <label class="form-check-label">
                   Largo
                 </label>
@@ -170,7 +170,7 @@
                 <label class="form-check-label">
                   Sí
                 </label>
-                <input class="form-check-input" type="radio"id="no_conversion" value="no_conversión">
+                <input class="form-check-input" type="radio" id="no_conversion" value="no_conversión">
                 <label class="form-check-label">
                   No
                 </label>
@@ -178,7 +178,7 @@
 
               <div class="col-md-4">
                 <label>Motivo de conversión</label>
-                <select class="form-select"id="motivo_conv">
+                <select class="form-select" id="motivo_conv">
 
                   <option selected value="ninguno">Ninguno</option>
                   <option value="vasoespasmo">Vasoespasmo</option>
@@ -222,7 +222,7 @@
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Tiempo de radioscopia</label>
-                <input type="number" class="form-control" id="rayos" >
+                <input type="number" class="form-control" id="rayos">
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Dosis de mGy</label>
@@ -261,15 +261,15 @@
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Compresión</label>
-                <input class="form-check-input" type="radio"id="estandar" value="compresion_normal">
+                <input class="form-check-input" type="radio" id="estandar" value="compresion_normal">
                 <label class="form-check-label">
                   Estandar
                 </label>
-                <input class="form-check-input" type="radio"id="proglide" value="proglide">
+                <input class="form-check-input" type="radio" id="proglide" value="proglide">
                 <label class="form-check-label">
                   Proglide
                 </label>
-                <input class="form-check-input" type="radio"id="sutura" value="sutura">
+                <input class="form-check-input" type="radio" id="sutura" value="sutura">
                 <label class="form-check-label">
                   Sutura
                 </label>
@@ -280,23 +280,23 @@
               <input type="email" class="form-control" id="complicaciones">
             </div>
 
-            
-            
+
+
             <div id="lesiones_cards">
 
             </div>
 
             <div class="container center p-3" id="botones">
             </div>
-            
-          
+
+
         </div>
 
       </div>
     </div>
-<div id="resultados" class="d-block center center__object">
-</div>
-</form>
+    <div id="resultados" class="d-block center center__object">
+    </div>
+    </form>
   </main>
 
   <aside>
@@ -406,8 +406,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <script src="https://kit.fontawesome.com/9b8325ff01.js" crossorigin="anonymous"></script>
-  <script src="../js/main.js">
-  </script>
+  <script src="../js/main.js"></script>
 </body>
 
 </html>
