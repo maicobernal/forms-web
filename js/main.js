@@ -4,15 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
   mostrarBtn();
   chequearEntry();
 })
-
 const botonera = document.querySelector("#botones");
-
 const contenedorLesiones = document.querySelector("#lesiones_cards");
 
 let nroLesiones = 0;
 
 function mostrarBtn() {
-  botonera.innerHTML(`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
+  botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
 }
 
 
@@ -108,7 +106,7 @@ function borrarLesion(e) {
 
 function cambiarBtn() {
   if (nroLesiones > 0) {
-    botonera.innerHTML(`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
+    botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
   }
 }
 
@@ -144,14 +142,15 @@ let acceso = {};
 let aspectos_tecnicos = {};
 
 class Lesiones {
-  constructor(id, vaso, segmento, obstruccion, calcio, bifurcacion) {
-    this.id = id;
+  constructor(vaso, segmento, obstruccion, calcio, bifurcacion) {
     this.vaso = vaso;
     this.segmento = segmento;
     this.obstruccion = obstruccion;
     this.calcio = calcio;
     this.bifurcacion = bifurcacion;
+    this.id = Math.floor(Math.random() * 10000);
   }
+  
 }
 
 let lesiones = [];
@@ -300,7 +299,6 @@ function iniciar() {
   for (i = 1; i <= nroLesiones; i++) {
     if (document.getElementById(`lesion${i}`) != undefined) {
       lesiones.push(new Lesiones(
-        Date.now(),
         document.getElementById(`lesion${i}_vaso`).value,
         document.getElementById(`lesion${i}_segmento`).value,
         document.getElementById(`lesion${i}_severidad`).value,
