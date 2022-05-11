@@ -110,11 +110,12 @@ function cambiarBtn() {
   }
 }
 
+let datosfilAll = [];
+let lesiones = [];
+
 function chequearEntry() {
-  let datosfilAll;
-  let lesiones;
-  let datosfilAllStored = JSON.stringify(localStorage.getItem("datosfillAllJSON"));
-  let lesionesStored = JSON.stringify(localStorage.getItem("lesionesJSON"));
+  let datosfilAllStored = JSON.parse(localStorage.getItem("datosfillAll"));
+  let lesionesStored = JSON.parse(localStorage.getItem("lesiones"));
   if (datosfilAllStored) {
     Swal.fire({
       title: '¿Desea utilizar datos de la sesión previa?',
@@ -128,14 +129,10 @@ function chequearEntry() {
         lesiones = lesionesStored;
       } else if (result.isDenied) {
         localStorage.clear();
-        Swal.fire('Ingrese nuevos datos', '', 'info')
       }
     })
-
   }
 }
-
-
 
 let datosfiliatorios = {};
 let acceso = {};
@@ -150,10 +147,8 @@ class Lesiones {
     this.bifurcacion = bifurcacion;
     this.id = Math.floor(Math.random() * 10000);
   }
-  
-}
 
-let lesiones = [];
+}
 
 function iniciar() {
 
