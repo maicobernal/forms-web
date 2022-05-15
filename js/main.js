@@ -313,7 +313,6 @@ function iniciar() {
   let lesionesJSON = JSON.stringify(lesiones);
   localStorage.setItem("lesiones", lesionesJSON);
   imprimir(datosfilAll, lesiones);
-
 }
 
 
@@ -340,6 +339,7 @@ let nombres = {
 let resultados = document.querySelector("#resultados");
 
 function imprimir(datosfilAll, lesiones) {
+  console.log(lesiones.length)
   resultados.innerHTML = (
     `<div><h2 class="h__md">Resultados preliminares del informe</h2>
     <table class="table table-sm table-hover table-striped m-3 p-3">
@@ -366,7 +366,7 @@ function imprimir(datosfilAll, lesiones) {
     str0 += "</tr>";
   }
   document.querySelector('#tabla_nombres').innerHTML = str0;
-  if (lesiones != undefined) {
+  if (lesiones.length != 0 ) {
     document.querySelector("#tablas_preanalisis").innerHTML = (
       `<div><h2 class="h__md">Lesiones ingresadas</h2>
     <table class="table table-sm table-hover table-striped m-3 p-3">

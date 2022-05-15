@@ -39,3 +39,21 @@
     font-family: map-get($caption-style, font-type-p);
     font-weight: map-get($caption-style, text-bolder);
   }
+
+
+  /* Formato botones carousel */
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+    filter: invert(100%);
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    width: 8vw;
+    padding: 20vw 0 20vw 0;
+}
+
+.carousel-indicators {
+    margin-bottom: 3rem;
+}

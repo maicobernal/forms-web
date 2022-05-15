@@ -106,7 +106,10 @@
             </div>
             <div class="row g-3 justify-content-evenly">
               <div class="col-md-4">
+                <div class="row g-3 justify-content-evenly">
                 <label class="form-label form__recetas">Acceso</label>
+              </div>
+              <div>
                 <input class="form-check-input" type="radio" id="acceso_rad" value="radial">
                 <label class="form-check-label">
                   Radial
@@ -115,6 +118,7 @@
                 <label class="form-check-label">
                   Femoral
                 </label>
+              </div>
                 <input class="form-check-input" type="radio" id="acceso_cub" value="cubital">
                 <label class="form-check-label">
                   Cubital
@@ -126,7 +130,10 @@
               </div>
 
               <div class="col-md-4">
+                <div class="row">
                 <label class="form-label form__recetas">Localización</label>
+              </div>
+
                 <input class="form-check-input" type="radio" id="acceso_der" value="derecho">
                 <label class="form-check-label">
                   Derecho
@@ -137,7 +144,9 @@
                 </label>
               </div>
               <div class="col-md-4">
+                <div class="row">
                 <label class="form-label form__recetas">Tamaño introductor</label>
+              </div>
                 <input class="form-check-input" type="radio" id="5fr_form" value="5fr">
                 <label class="form-check-label">
                   5 French
@@ -153,7 +162,9 @@
               </div>
 
               <div class="col-md-4">
+                <div class="row">
                 <label class="form-label form__recetas">Tipo introductor</label>
+                </div>
                 <input class="form-check-input" type="radio" id="intro_corto" value="corto">
                 <label class="form-check-label">
                   Corto
@@ -165,7 +176,9 @@
               </div>
 
               <div class="col-md-4">
+                <div class="row">
                 <label class="form-label form__recetas">¿Requirió conversión?</label>
+              </div>
                 <input class="form-check-input" type="radio" id="si_conversion" value="si_conversion">
                 <label class="form-check-label">
                   Sí
@@ -177,7 +190,7 @@
               </div>
 
               <div class="col-md-4">
-                <label>Motivo de conversión</label>
+                <label class="form-label form__recetas">Motivo de conversión</label>
                 <select class="form-select" id="motivo_conv">
 
                   <option selected value="ninguno">Ninguno</option>
@@ -189,7 +202,8 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label for="">Catéteres utilizados</label>
+                <label class= "form-label form__recetas" for="">Catéteres utilizados</label>
+                <div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" value="tiger" id="tiger">
                   <label class="form-check-label">
@@ -198,9 +212,11 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" value="judkins_dx" id="jljr_dx">
                     <label class="form-check-label">
-                      JL y JR diagnósticos
+                      JL/JR
                     </label>
                   </div>
+                </div>
+                <div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" value="guiaEBU" id="ebu">
                     <label class="form-check-label">
@@ -213,6 +229,7 @@
                       guía JR
                     </label>
                   </div>
+                </div>
 
                 </div>
               </div>
@@ -233,7 +250,8 @@
                 <input type="number" class="form-control" id="contraste">
               </div>
               <div class="col-md-4">
-                <label>Operadores</label>
+                <label class="form-label form__recetas">Operadores</label>
+                <div>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="checkbox" value="bernal" id="bernal">
                   <label class="form-check-label">
@@ -245,6 +263,8 @@
                       Ramos
                     </label>
                   </div>
+                </div>
+                <div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" value="laino" id="laino">
                     <label class="form-check-label">
@@ -258,9 +278,12 @@
                     </label>
                   </div>
                 </div>
+                </div>
               </div>
               <div class="col-md-4">
+                <div class="row">
                 <label class="form-label form__recetas">Compresión</label>
+              </div>
                 <input class="form-check-input" type="radio" id="estandar" value="compresion_normal">
                 <label class="form-check-label">
                   Estandar
@@ -274,11 +297,12 @@
                   Sutura
                 </label>
               </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Complicaciones</label>
+                <input type="email" class="form-control" id="complicaciones">
+              </div>
             </div>
-            <div class="col-md-4">
-              <label class="form-label form__recetas">Complicaciones</label>
-              <input type="email" class="form-control" id="complicaciones">
-            </div>
+            
 
 
 

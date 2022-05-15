@@ -1,0 +1,15 @@
+ /*Formato formularios*/
+ form {
+    text-align: $align-center;
+  }
+ 
+  .form-label {
+    @include text ($color: $color-dark !important);
+    font-weight: $text-bold !important;
+  }
+  
+  .form__recetas {
+    text-align: $align-center;
+  }
+  
+  

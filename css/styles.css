@@ -471,6 +471,9 @@ form {
   padding: 0 1rem 0 1rem;
   font-weight: bold !important; }
 
+.form__recetas {
+  text-align: center; }
+
 /*Especialistas FlexBox*/
 .flex__esp {
   display: flex;
@@ -518,6 +521,3 @@ caption {
 
 .carousel-indicators {
   margin-bottom: 3rem; }
-
-.form__recetas {
-  text-align: center; }
