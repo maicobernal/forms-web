@@ -1,5 +1,8 @@
 //Informe CCG
 
+let datosfilAll = [];
+let lesiones = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   mostrarBtn();
   chequearEntry();
@@ -110,23 +113,20 @@ function cambiarBtn() {
   }
 }
 
-let datosfilAll = [];
-let lesiones = [];
-
 function chequearEntry() {
   let datosfilAllStored = JSON.parse(localStorage.getItem("datosfillAll"));
   let lesionesStored = JSON.parse(localStorage.getItem("lesiones"));
   if (datosfilAllStored) {
     Swal.fire({
       title: '¿Desea utilizar datos de la sesión previa?',
-      showDenyButton: true,
+      showDenyButton: true, 
       showCancelButton: true,
       confirmButtonText: 'Utilizar',
       denyButtonText: `No utilizar`,
     }).then((result) => {
       if (result.isConfirmed) {
-        datosfilAll = datosfilAllStored;
-        lesiones = lesionesStored;
+        imprimir(datosfilAllStored, lesionesStored);
+        window.location.href='/sections/ccg.html#resultados';
       } else if (result.isDenied) {
         localStorage.clear();
       }
@@ -366,7 +366,7 @@ function imprimir(datosfilAll, lesiones) {
     str0 += "</tr>";
   }
   document.querySelector('#tabla_nombres').innerHTML = str0;
-  if (nroLesiones > 0) {
+  if (lesiones != undefined) {
     document.querySelector("#tablas_preanalisis").innerHTML = (
       `<div><h2 class="h__md">Lesiones ingresadas</h2>
     <table class="table table-sm table-hover table-striped m-3 p-3">
