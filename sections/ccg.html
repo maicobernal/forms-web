@@ -83,10 +83,11 @@
     <div class="container-fluid">
       <div id="formulario" class="">
         <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
-          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg">
+          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off"
+            action="/action_page.php" target="_blank">
             <div class="col-md-4">
-              <label class="form-label form__recetas">Nombre y apellido</label>
-              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="name_form">
+              <label class="form-label form__recetas" required>Nombre y apellido</label>
+              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="name_form" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas">Nro de procedimiento</label>
@@ -107,23 +108,23 @@
             <div class="row g-3 justify-content-evenly">
               <div class="col-md-4">
                 <div class="row g-3 justify-content-evenly">
-                <label class="form-label form__recetas">Acceso</label>
-              </div>
-              <div>
-                <input class="form-check-input" type="radio" id="acceso_rad" value="radial">
-                <label class="form-check-label">
-                  Radial
-                </label>
-                <input class="form-check-input" type="radio" id="acceso_fem" value="femoral">
-                <label class="form-check-label">
-                  Femoral
-                </label>
-              </div>
-                <input class="form-check-input" type="radio" id="acceso_cub" value="cubital">
+                  <label class="form-label form__recetas" for="acceso">Acceso</label>
+                </div>
+                <div>
+                  <input class="form-check-input" type="radio" name="acceso" id="acceso_rad" value="radial">
+                  <label class="form-check-label">
+                    Radial
+                  </label>
+                  <input class="form-check-input" type="radio" name="acceso" id="acceso_fem" value="femoral">
+                  <label class="form-check-label">
+                    Femoral
+                  </label>
+                </div>
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_cub" value="cubital">
                 <label class="form-check-label">
                   Cubital
                 </label>
-                <input class="form-check-input" type="radio" id="acceso_rad_dist" value="radial_dist">
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_rad_dist" value="radial_dist">
                 <label class="form-check-label">
                   Radial distal
                 </label>
@@ -131,31 +132,31 @@
 
               <div class="col-md-4">
                 <div class="row">
-                <label class="form-label form__recetas">Localización</label>
-              </div>
+                  <label class="form-label form__recetas">Localización</label>
+                </div>
 
-                <input class="form-check-input" type="radio" id="acceso_der" value="derecho">
+                <input class="form-check-input" type="radio" name="localizacion" id="acceso_der" value="derecho">
                 <label class="form-check-label">
                   Derecho
                 </label>
-                <input class="form-check-input" type="radio" id="acceso_izq" value="izquierdo">
+                <input class="form-check-input" type="radio" name="localizacion" id="acceso_izq" value="izquierdo">
                 <label class="form-check-label">
                   Izquierdo
                 </label>
               </div>
               <div class="col-md-4">
                 <div class="row">
-                <label class="form-label form__recetas">Tamaño introductor</label>
-              </div>
-                <input class="form-check-input" type="radio" id="5fr_form" value="5fr">
+                  <label class="form-label form__recetas">Tamaño introductor</label>
+                </div>
+                <input class="form-check-input" type="radio" name="tamano" id="5fr_form" value="5fr">
                 <label class="form-check-label">
                   5 French
                 </label>
-                <input class="form-check-input" type="radio" id="6fr_form" value="6fr">
+                <input class="form-check-input" type="radio" name="tamano" id="6fr_form" value="6fr">
                 <label class="form-check-label">
                   6 French
                 </label>
-                <input class="form-check-input" type="radio" id="7fr_form" value="7fr">
+                <input class="form-check-input" type="radio" name="tamano" id="7fr_form" value="7fr">
                 <label class="form-check-label">
                   7 French
                 </label>
@@ -163,13 +164,13 @@
 
               <div class="col-md-4">
                 <div class="row">
-                <label class="form-label form__recetas">Tipo introductor</label>
+                  <label class="form-label form__recetas">Tipo introductor</label>
                 </div>
-                <input class="form-check-input" type="radio" id="intro_corto" value="corto">
+                <input class="form-check-input" type="radio" name="largo" id="intro_corto" value="corto">
                 <label class="form-check-label">
                   Corto
                 </label>
-                <input class="form-check-input" type="radio" id="intro_largo" value="largo">
+                <input class="form-check-input" type="radio" name="largo" id="intro_largo" value="largo">
                 <label class="form-check-label">
                   Largo
                 </label>
@@ -177,13 +178,13 @@
 
               <div class="col-md-4">
                 <div class="row">
-                <label class="form-label form__recetas">¿Requirió conversión?</label>
-              </div>
-                <input class="form-check-input" type="radio" id="si_conversion" value="si_conversion">
+                  <label class="form-label form__recetas">¿Requirió conversión?</label>
+                </div>
+                <input class="form-check-input" type="radio" name="conversion" id="si_conversion" value="si_conversion">
                 <label class="form-check-label">
                   Sí
                 </label>
-                <input class="form-check-input" type="radio" id="no_conversion" value="no_conversión">
+                <input class="form-check-input" type="radio" name="conversion" id="no_conversion" value="no_conversión">
                 <label class="form-check-label">
                   No
                 </label>
@@ -202,34 +203,34 @@
                 </select>
               </div>
               <div class="col-md-4">
-                <label class= "form-label form__recetas" for="">Catéteres utilizados</label>
-                <div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" value="tiger" id="tiger">
-                  <label class="form-check-label">
-                    Tiger
-                  </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="judkins_dx" id="jljr_dx">
-                    <label class="form-check-label">
-                      JL/JR
-                    </label>
-                  </div>
-                </div>
+                <label class="form-label form__recetas" for="cateteres">Catéteres utilizados</label>
                 <div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="guiaEBU" id="ebu">
+                    <input class="form-check-input" type="checkbox" name="cateteres" value="tiger" id="tiger">
                     <label class="form-check-label">
-                      guía EBU
+                      Tiger
                     </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="judkins" id="jljr_dx">
+                      <label class="form-check-label">
+                        JL/JR
+                      </label>
+                    </div>
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="guiaJR" id="jr">
-                    <label class="form-check-label">
-                      guía JR
-                    </label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="guia EBU" id="ebu">
+                      <label class="form-check-label">
+                        guía EBU
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="guia JR" id="jr">
+                      <label class="form-check-label">
+                        guía JR
+                      </label>
+                    </div>
                   </div>
-                </div>
 
                 </div>
               </div>
@@ -250,77 +251,72 @@
                 <input type="number" class="form-control" id="contraste">
               </div>
               <div class="col-md-4">
-                <label class="form-label form__recetas">Operadores</label>
-                <div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" value="bernal" id="bernal">
-                  <label class="form-check-label">
-                    Bernal
-                  </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="ramos" id="ramos">
-                    <label class="form-check-label">
-                      Ramos
-                    </label>
-                  </div>
-                </div>
+                <label class="form-label form__recetas" for="operadores">Operadores</label>
                 <div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="laino" id="laino">
+                    <input class="form-check-input" type="checkbox" name="operadores" value="bernal" id="bernal">
                     <label class="form-check-label">
-                      Laiño
+                      Bernal
                     </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="ramos" id="ramos">
+                      <label class="form-check-label">
+                        Ramos
+                      </label>
+                    </div>
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="payaslian" id="payaslian">
-                    <label class="form-check-label">
-                      Payaslian
-                    </label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="laino" id="laino">
+                      <label class="form-check-label">
+                        Laiño
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="payaslian"
+                        id="payaslian">
+                      <label class="form-check-label">
+                        Payaslian
+                      </label>
+                    </div>
                   </div>
-                </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="row">
-                <label class="form-label form__recetas">Compresión</label>
-              </div>
-                <input class="form-check-input" type="radio" id="estandar" value="compresion_normal">
+                  <label class="form-label form__recetas">Compresión</label>
+                </div>
+                <input class="form-check-input" type="radio" id="estandar" name="compresion" value="compresion_normal">
                 <label class="form-check-label">
                   Estandar
                 </label>
-                <input class="form-check-input" type="radio" id="proglide" value="proglide">
+                <input class="form-check-input" type="radio" name="compresion" id="proglide" value="proglide">
                 <label class="form-check-label">
                   Proglide
                 </label>
-                <input class="form-check-input" type="radio" id="sutura" value="sutura">
+                <input class="form-check-input" type="radio" name="compresion" id="sutura" value="sutura">
                 <label class="form-check-label">
                   Sutura
                 </label>
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Complicaciones</label>
-                <input type="email" class="form-control" id="complicaciones">
+                <input type="email" class="form-control" id="complicaciones" value="Ninguna">
               </div>
             </div>
-            
-
-
-
-            <div id="lesiones_cards">
-
-            </div>
-
-            <div class="container center p-3" id="botones">
-            </div>
-
-
         </div>
+        <div id="lesiones_cards">
+        </div>
+
+        <div class="container center p-3" id="botones">
+        </div>
+
+        <div id="resultados" class="d-block center center__object">
+        </div>
+        </form>
 
       </div>
     </div>
-    <div id="resultados" class="d-block center center__object">
-    </div>
-    </form>
   </main>
 
   <aside>

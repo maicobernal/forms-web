@@ -19,10 +19,10 @@ function mostrarBtn() {
 
 function agregarLesion() {
   const divLesion = document.createElement("div");
-  nroLesiones = nroLesiones + 1;
+  nroLesiones += 1;
   for (i = nroLesiones; i <= nroLesiones; i++) {
     divLesion.classList.add(`card${i}`);
-    divLesion.innerHTML = (`<div class="card h-100 aside__card" id="lesion${i}">
+    divLesion.innerHTML = (`<div class="card h-100" id="lesion${i}">
   <div class="card-body">
     <p class="card-title p__md--strong center" id="lesiontitle${i}">Lesión Nº ${i} <a id = "borrar${i}" class = "btn__cerrar" onclick = borrarLesion(${i}) > ❌ </a></p> 
     <div class="input-group mb-3">
@@ -91,26 +91,24 @@ function borrarLesion(e) {
   let posicion = e;
   const toErase = document.querySelector(`.card${posicion}`);
   toErase.remove();
-  posicion = posicion + 1;
+  posicion += 1;
   for (i = posicion; i <= nroLesiones; i++) {
     document.querySelector(`.card${i}`).className = `card${i-1}`;
     document.querySelector(`#lesion${i}`).id = `lesion${i-1}`;
     document.querySelector(`#lesiontitle${i}`).innerHTML = `Lesión Nº ${i-1} <a id = "borrar${i-1}" class = "btn__cerrar" onclick = borrarLesion(${i-1}) > ❌ </a>`;
     document.querySelector(`#lesiontitle${i}`).id = `lesiontitle${i-1}`;
-    document.querySelector(`#lesion${i}_vaso`).id = `#lesion${i-1}_vaso`;
-    document.querySelector(`#lesion${i}_segmento`).id = `#lesion${i-1}_segmento`;
-    document.querySelector(`#lesion${i}_severidad`).id = `#lesion${i-1}_severidad`;
-    document.querySelector(`#lesion${i}_calcio`).id = `#lesion${i-1}_calcio`;
-    document.querySelector(`#lesion${i}_bifurc`).id = `#lesion${i-1}_bifurc`;
+    document.querySelector(`#lesion${i}_vaso`).id = `lesion${i-1}_vaso`;
+    document.querySelector(`#lesion${i}_segmento`).id = `lesion${i-1}_segmento`;
+    document.querySelector(`#lesion${i}_severidad`).id = `lesion${i-1}_severidad`;
+    document.querySelector(`#lesion${i}_calcio`).id = `lesion${i-1}_calcio`;
+    document.querySelector(`#lesion${i}_bifurc`).id = `lesion${i-1}_bifurc`;
   }
-  nroLesiones = nroLesiones - 1;
+  nroLesiones -= 1;
 }
 
 
 function cambiarBtn() {
-  if (nroLesiones > 0) {
-    botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`);
-  }
+  nroLesiones > 0 && (botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`));
 }
 
 function chequearEntry() {
@@ -119,14 +117,14 @@ function chequearEntry() {
   if (datosfilAllStored) {
     Swal.fire({
       title: '¿Desea utilizar datos de la sesión previa?',
-      showDenyButton: true, 
+      showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Utilizar',
       denyButtonText: `No utilizar`,
     }).then((result) => {
       if (result.isConfirmed) {
         imprimir(datosfilAllStored, lesionesStored);
-        window.location.href='/sections/ccg.html#resultados';
+        window.location.href = '/sections/ccg.html#resultados';
       } else if (result.isDenied) {
         localStorage.clear();
       }
@@ -165,8 +163,8 @@ function iniciar() {
     posicion: derizq_sel(),
     french: french_sel(),
     longitud: largo_sel(),
-    conversion: conversion_sel(),
-    cateteres: cateter_sel(),
+    conversion: document.getElementById("motivo_conv").value,
+    cateteres: []
   }
 
   let aspectos_tecnicos = {
@@ -174,123 +172,47 @@ function iniciar() {
     rayos: document.getElementById("rayos").value,
     mgy: document.getElementById("mgy").value,
     contraste: document.getElementById("contraste").value,
-    operadores: operadores_sel(),
+    operadores: [],
     compresion: compresion_sel(),
     complicaciones: document.getElementById("complicaciones").value,
   }
 
   function acceso_sel() {
-    let accesos = [document.getElementById("acceso_rad").value,
-      document.getElementById("acceso_fem").value,
-      document.getElementById("acceso_cub").value,
-      document.getElementById("acceso_rad_dist").value
-    ];
-    let accesos_clean = [];
-    for (n1 of accesos) {
-      if (n1 != undefined) {
-        accesos_clean.push(n1)
-      }
-      return accesos_clean;
-    }
+    return (document.getElementById("acceso_rad").checked && "radial") || (
+      document.getElementById("acceso_fem").checked && "femoral") || (
+      document.getElementById("acceso_cub").checked && "cubital") || (
+      document.getElementById("acceso_rad_dist").checked && "radial distal");
   }
 
   function derizq_sel() {
-    let lado = [
-      document.getElementById("acceso_der").value,
-      document.getElementById("acceso_izq").value
-    ];
-    let lado_clean = [];
-    for (n1 of lado) {
-      if (n1 != undefined) {
-        lado_clean.push(n1)
-      }
-      return lado_clean;
-    }
+    return (document.getElementById("acceso_der").checked && "derecho") || (
+      document.getElementById("acceso_izq").checked && "izquierdo")
   }
 
   function french_sel() {
-    let french = [
-      document.getElementById("5fr_form").value,
-      document.getElementById("6fr_form").value,
-      document.getElementById("7fr_form").value
-    ];
-    let french_clean = [];
-    for (n1 of french) {
-      if (n1 != undefined) {
-        french_clean.push(n1)
-      }
-      return french_clean;
-    }
+    return (document.getElementById("5fr_form").checked && "5Fr") || (
+      document.getElementById("6fr_form").checked && "6Fr") || (
+      document.getElementById("7fr_form").checked && "7Fr")
   }
 
   function largo_sel() {
-    let intros = [document.getElementById("intro_corto").value, document.getElementById("intro_largo").value];
-    let intros_clean = [];
-    for (n1 of intros) {
-      if (n1 != undefined) {
-        intros_clean.push(n1)
-      }
-      return intros_clean;
-    }
+    return (document.getElementById("intro_corto").checked && "corto") || (
+      document.getElementById("intro_largo").checked && "largo");
   }
 
-  function conversion_sel() {
-    let conv = [document.getElementById("si_conversion").value, document.getElementById("no_conversion").value];
-    let why = document.getElementById("motivo_conv").value;
-    let conv_clean = [];
-    for (n1 of conv) {
-      if (n1 != undefined) {
-        conv_clean.push(n1)
-      }
-      if (conv_clean == "si_conversion") {
-        return why;
-      } else {
-        return 'no hubo conversion'
-      }
-    }
-  }
+  //Cateteres
+  document.getElementsByName("cateteres").forEach((x) => acceso.cateteres.push(((x.checked || "") && x.value)))
 
-  function cateter_sel() {
-    let tiger = document.getElementById("tiger").value;
-    let judkins = document.getElementById("jljr_dx").value;
-    let ebu = document.getElementById("ebu").value;
-    let jrguia = document.getElementById("jr").value;
-    let cateteres = [tiger, judkins, ebu, jrguia];
-    let cateteres_clean = [];
-    for (n1 of cateteres) {
-      if (n1 != undefined) {
-        cateteres_clean.push(n1)
-      }
-      return cateteres_clean;
-    }
-  }
-
-  function operadores_sel() {
-    let operadores = [document.getElementById("bernal").value, document.getElementById("ramos").value, document.getElementById("laino").value, document.getElementById("payaslian").value]
-    let operadores_clean = [];
-    for (n1 of operadores) {
-      if (n1 != undefined) {
-        operadores_clean.push(n1)
-      }
-      return operadores_clean;
-    }
-  }
+  //Operadores
+  document.getElementsByName("operadores").forEach((x) => aspectos_tecnicos.operadores.push(((x.checked || "") && x.value)))
 
   function compresion_sel() {
-    let compresion = [
-      document.getElementById("estandar").value,
-      document.getElementById("proglide").value,
-      document.getElementById("sutura").value
-    ];
-    let compresion_clean = [];
-    for (n1 of compresion) {
-      if (n1 != undefined) {
-        compresion_clean.push(n1)
-      }
-      return compresion_clean;
-    }
+    return (document.getElementById("estandar").checked && "estandar") || (
+      document.getElementById("proglide").checked && "proglide") || (
+      document.getElementById("sutura").checked && "sutura")
   }
-  let lesiones = []; //Reseteo por si quiero volver a ejecutar la funcion
+
+  lesiones = []; //Reseteo por si quiero volver a ejecutar la funcion
   for (i = 1; i <= nroLesiones; i++) {
     if (document.getElementById(`lesion${i}`) != undefined) {
       lesiones.push(new Lesiones(
@@ -339,10 +261,9 @@ let nombres = {
 let resultados = document.querySelector("#resultados");
 
 function imprimir(datosfilAll, lesiones) {
-  console.log(lesiones.length)
   resultados.innerHTML = (
     `<div><h2 class="h__md">Resultados preliminares del informe</h2>
-    <table class="table table-sm table-hover table-striped m-3 p-3">
+    <table class="table table-sm table-hover table-striped">
         <thead class="t-head-light p__md--strong center">
                  <td>
                     Variable
@@ -366,10 +287,10 @@ function imprimir(datosfilAll, lesiones) {
     str0 += "</tr>";
   }
   document.querySelector('#tabla_nombres').innerHTML = str0;
-  if (lesiones.length != 0 ) {
+  if (lesiones.length != 0) {
     document.querySelector("#tablas_preanalisis").innerHTML = (
       `<div><h2 class="h__md">Lesiones ingresadas</h2>
-    <table class="table table-sm table-hover table-striped m-3 p-3">
+    <table class="table table-sm table-hover table-striped">
         <thead class="t-head-light p__md--strong center">
                  <td>
                     Lesión Nº
@@ -411,8 +332,8 @@ function imprimir(datosfilAll, lesiones) {
   }
 
   let resultadosBtn = document.createElement("div");
-  resultadosBtn.innerHTML = (`<div class="btn btn-primary" onclick=submit()>Finalizar y enviar</div>
-<div class="btn btn-secondary" onclick=reset()>Borrar todo</div>
+  resultadosBtn.innerHTML = (`<input class="btn btn-primary mt-2" type=submit value="Finalizar y enviar"></input>
+<input class="btn btn-secondary mt-2" type="reset" value="Borrar todo"></input>
 `);
   resultados.appendChild(resultadosBtn);
 }
