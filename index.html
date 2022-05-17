@@ -96,7 +96,19 @@
     <div class="container-fluid">
       <h2>Sitio web en construcción</h2>
     </div>
-  </div>
+ 
+    <form id="my-form" action="https://script.google.com/macros/s/AKfycbyhcAXo8md5EkB6I3Ysi184zTxJnOfvE6NVl3EXUfMe/dev" method="POST">
+
+        <label class="form-label form__recetas">Nombre y apellido</label>
+        <input type="text" class="form-control" name="nombre">
+
+        <label class="form-label form__recetas">Nro de procedimiento</label>
+        <input type="number" class="form-control" name="nroproc">
+
+      <button class="btn btn-primary mt-2" type="submit">Finalizar y enviar</button>
+      <button class="btn btn-secondary mt-2" type="reset">Borrar todo</button>
+   
+    </form>
 
   </main>
 
@@ -205,7 +217,26 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
+<script>
+  window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data,
+    })
+    .then(() => {
+      alert("Success!");
+    })
+  });
+});
 
+
+</script>
 </body>
 
 </html>

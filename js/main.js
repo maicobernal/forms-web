@@ -27,7 +27,7 @@ function agregarLesion() {
     <p class="card-title p__md--strong center" id="lesiontitle${i}">Lesión Nº ${i} <a id = "borrar${i}" class = "btn__cerrar" onclick = borrarLesion(${i}) > ❌ </a></p> 
     <div class="input-group mb-3">
       <label class="input-group-text">Vaso</label>
-      <select class="form-select" id="lesion${i}_vaso">
+      <select class="form-select" id="lesion${i}_vaso" name="lesion${i}_vaso">
         <option selected value="0">Elegir...</option>
         <option value="TCI">TCI</option>
         <option value="DA">DA</option>
@@ -38,7 +38,7 @@ function agregarLesion() {
     </div>
 
     <div class="input-group mb-3">
-      <select class="form-select" id="lesion${i}_segmento">
+      <select class="form-select" id="lesion${i}_segmento" name="lesion${i}_segmento">
         <option selected value="0">Elegir...</option>
         <option value="ostial">Ostial</option>
         <option value="proximal">Proximal</option>
@@ -51,12 +51,11 @@ function agregarLesion() {
     <div class="input-group mb-3">
       <label class="input-group-text">% de obstrucción</label>
       <input type="number" class="form-control"
-        id="lesion${i}_severidad">
+        id="lesion${i}_severidad" name="lesion${i}_severidad">
     </div>
 
     <div class="input-group">
-      <select class="form-select" id="lesion${i}_calcio"
-        >
+      <select class="form-select" id="lesion${i}_calcio" name="lesion${i}_calcio">
         <option value="ninguno" selected>Ninguna</option>
         <option value="moderado">Moderada</option>
         <option value="severo">Severa</option>
@@ -66,8 +65,7 @@ function agregarLesion() {
 
 
     <div class="input-group">
-      <select class="form-select" id="lesion${i}_bifurc"
-        >
+      <select class="form-select" id="lesion${i}_bifurc" name="lesion${i}_bifurc">
         <option value="no es bifurcación">No es bifurcación</option>
         <option value="1.1.1">1.1.1</option>
         <option value="1.1.0">1.1.0</option>
@@ -332,8 +330,25 @@ function imprimir(datosfilAll, lesiones) {
   }
 
   let resultadosBtn = document.createElement("div");
-  resultadosBtn.innerHTML = (`<input class="btn btn-primary mt-2" type=submit value="Finalizar y enviar"></input>
-<input class="btn btn-secondary mt-2" type="reset" value="Borrar todo"></input>
+  resultadosBtn.innerHTML = (`<button class="btn btn-primary mt-2" type=submit>Finalizar y enviar</button>
+<button class="btn btn-secondary mt-2" type="reset">Borrar todo</button>
 `);
   resultados.appendChild(resultadosBtn);
 }
+window.addEventListener("load", function() {
+  const form = document.getElementById('formularioccg');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      mode: 'cors',
+      body: data,
+    })
+    .then(() => {
+      alert("Success!");
+    })
+    .catch(error => console.error('Error!', error.message))
+  });
+});

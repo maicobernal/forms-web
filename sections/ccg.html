@@ -25,6 +25,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
 
 
@@ -79,53 +80,52 @@
 
   <main>
     <h2 class="h__md">Informe de cinecoronariografía</h2>
-
+    <!-- pattern="[A-Za-z]{3}"  -->
     <div class="container-fluid">
       <div id="formulario" class="">
         <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
-          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off"
-            action="/action_page.php" target="_blank">
+          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off" action="https://script.google.com/macros/s/AKfycbyuIc2fT2vsej8EJDmdplypHW8RQEctW4BR8udZZBwdTxE_bp16p_6K3G6GIBHQAvswtA/exec">
             <div class="col-md-4">
-              <label class="form-label form__recetas" required>Nombre y apellido</label>
-              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="name_form" required>
+              <label class="form-label form__recetas" for="name_form">Nombre y apellido</label>
+              <input type="text" class="form-control" id="name_form" name="nombre">
             </div>
             <div class="col-md-4">
-              <label class="form-label form__recetas">Nro de procedimiento</label>
-              <input type="number" class="form-control" id="nroproc_form">
+              <label class="form-label form__recetas" for="nroproc_form">Nro de procedimiento</label>
+              <input type="number" class="form-control" id="nroproc_form" name="nroproc">
             </div>
             <div class="col-md-4">
-              <label class="form-label form__recetas">Fecha del procedimiento</label>
-              <input type="date" class="form-control" id="date_form">
+              <label class="form-label form__recetas" for="date_form">Fecha del procedimiento</label>
+              <input type="date" class="form-control" id="date_form" name="fechaproc">
             </div>
             <div class="col-md-4">
-              <label class="form-label form__recetas">DNI o documento</label>
-              <input type="number" class="form-control" id="dni_form">
+              <label class="form-label form__recetas" for="dni_form">DNI o documento</label>
+              <input type="number" class="form-control" id="dni_form" name="dni">
             </div>
             <div class="col-md-4">
-              <label class="form-label form__recetas">Médico o centro solicitante</label>
-              <input type="text" pattern="[A-Za-z]{3}" class="form-control" id="medsol_form">
+              <label class="form-label form__recetas" for="medsol_form">Médico o centro solicitante</label>
+              <input type="text" class="form-control" id="medsol_form" name="solicitante">
             </div>
             <div class="row g-3 justify-content-evenly">
               <div class="col-md-4">
                 <div class="row g-3 justify-content-evenly">
-                  <label class="form-label form__recetas" for="acceso">Acceso</label>
+                  <label class="form-label form__recetas">Acceso</label>
                 </div>
                 <div>
                   <input class="form-check-input" type="radio" name="acceso" id="acceso_rad" value="radial">
-                  <label class="form-check-label">
+                  <label class="form-check-label" for="acceso_rad">
                     Radial
                   </label>
                   <input class="form-check-input" type="radio" name="acceso" id="acceso_fem" value="femoral">
-                  <label class="form-check-label">
+                  <label class="form-check-label" for="acceso_fem">
                     Femoral
                   </label>
                 </div>
                 <input class="form-check-input" type="radio" name="acceso" id="acceso_cub" value="cubital">
-                <label class="form-check-label">
+                <label class="form-check-label" for="acceso_cub">
                   Cubital
                 </label>
                 <input class="form-check-input" type="radio" name="acceso" id="acceso_rad_dist" value="radial_dist">
-                <label class="form-check-label">
+                <label class="form-check-label" for="acceso_rad_dist">
                   Radial distal
                 </label>
               </div>
@@ -136,11 +136,11 @@
                 </div>
 
                 <input class="form-check-input" type="radio" name="localizacion" id="acceso_der" value="derecho">
-                <label class="form-check-label">
+                <label class="form-check-label" for="acceso_der">
                   Derecho
                 </label>
                 <input class="form-check-input" type="radio" name="localizacion" id="acceso_izq" value="izquierdo">
-                <label class="form-check-label">
+                <label class="form-check-label" for="acceso_izq">
                   Izquierdo
                 </label>
               </div>
@@ -149,15 +149,15 @@
                   <label class="form-label form__recetas">Tamaño introductor</label>
                 </div>
                 <input class="form-check-input" type="radio" name="tamano" id="5fr_form" value="5fr">
-                <label class="form-check-label">
+                <label class="form-check-label" for="5fr_form">
                   5 French
                 </label>
                 <input class="form-check-input" type="radio" name="tamano" id="6fr_form" value="6fr">
-                <label class="form-check-label">
+                <label class="form-check-label" for="6fr_form">
                   6 French
                 </label>
                 <input class="form-check-input" type="radio" name="tamano" id="7fr_form" value="7fr">
-                <label class="form-check-label">
+                <label class="form-check-label" for="7fr_form">
                   7 French
                 </label>
               </div>
@@ -167,11 +167,11 @@
                   <label class="form-label form__recetas">Tipo introductor</label>
                 </div>
                 <input class="form-check-input" type="radio" name="largo" id="intro_corto" value="corto">
-                <label class="form-check-label">
+                <label class="form-check-label" for="intro_corto">
                   Corto
                 </label>
                 <input class="form-check-input" type="radio" name="largo" id="intro_largo" value="largo">
-                <label class="form-check-label">
+                <label class="form-check-label" for="intro_largo">
                   Largo
                 </label>
               </div>
@@ -181,18 +181,18 @@
                   <label class="form-label form__recetas">¿Requirió conversión?</label>
                 </div>
                 <input class="form-check-input" type="radio" name="conversion" id="si_conversion" value="si_conversion">
-                <label class="form-check-label">
+                <label class="form-check-label" for="si_conversion">
                   Sí
                 </label>
                 <input class="form-check-input" type="radio" name="conversion" id="no_conversion" value="no_conversión">
-                <label class="form-check-label">
+                <label class="form-check-label" for="no_conversion">
                   No
                 </label>
               </div>
 
               <div class="col-md-4">
-                <label class="form-label form__recetas">Motivo de conversión</label>
-                <select class="form-select" id="motivo_conv">
+                <label class="form-label form__recetas" for="motivo_conv">Motivo de conversión</label>
+                <select class="form-select" id="motivo_conv" name="conversionwhy">
 
                   <option selected value="ninguno">Ninguno</option>
                   <option value="vasoespasmo">Vasoespasmo</option>
@@ -207,12 +207,12 @@
                 <div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" name="cateteres" value="tiger" id="tiger">
-                    <label class="form-check-label">
+                    <label class="form-check-label" for="tiger">
                       Tiger
                     </label>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" name="cateteres" value="judkins" id="jljr_dx">
-                      <label class="form-check-label">
+                      <label class="form-check-label" for="jljr_dx">
                         JL/JR
                       </label>
                     </div>
@@ -220,13 +220,13 @@
                   <div>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" name="cateteres" value="guia EBU" id="ebu">
-                      <label class="form-check-label">
+                      <label class="form-check-label" for="ebu">
                         guía EBU
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" name="cateteres" value="guia JR" id="jr">
-                      <label class="form-check-label">
+                      <label class="form-check-label" for="jr">
                         guía JR
                       </label>
                     </div>
@@ -236,19 +236,19 @@
               </div>
               <div class="col-md-4">
                 <label for="validationDefault01" class="form-label form__recetas">Dosis de heparina</label>
-                <input type="text" class="form-control" id="heparina" value="5000" required>
+                <input type="text" class="form-control" id="heparina" value="5000" name="heparina">
               </div>
               <div class="col-md-4">
-                <label class="form-label form__recetas">Tiempo de radioscopia</label>
-                <input type="number" class="form-control" id="rayos">
+                <label class="form-label form__recetas" for="rayos">Tiempo de radioscopia</label>
+                <input type="number" class="form-control" id="rayos" name="rayos">
               </div>
               <div class="col-md-4">
-                <label class="form-label form__recetas">Dosis de mGy</label>
-                <input type="number" class="form-control" id="mgy">
+                <label class="form-label form__recetas" for="mgy">Dosis de mGy</label>
+                <input type="number" class="form-control" id="mgy" name="mgy">
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Cantidad de contraste</label>
-                <input type="number" class="form-control" id="contraste">
+                <input type="number" class="form-control" id="contraste" name="contraste">
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas" for="operadores">Operadores</label>
@@ -301,20 +301,20 @@
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas">Complicaciones</label>
-                <input type="email" class="form-control" id="complicaciones" value="Ninguna">
+                <input type="text" class="form-control" id="complicaciones" value="Ninguna" name="complicaciones">
               </div>
             </div>
-        </div>
-        <div id="lesiones_cards">
-        </div>
 
-        <div class="container center p-3" id="botones">
-        </div>
+            <div id="lesiones_cards">
+            </div>
 
-        <div id="resultados" class="d-block center center__object">
-        </div>
-        </form>
+            <div class="container center p-3" id="botones">
+            </div>
 
+            <div id="resultados" class="d-block center center__object">
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </main>
