@@ -12,3 +12,9 @@ El desafío es enorme...pero la motivación y las ganas de aprender también!
 Ante cualquier duda mi email de contacto es mibernalmd@gmail.com
 Muchas gracias por visitarnos! Cualquier comentario o sugerencia es bienvenido. 
 Saludos,
+
+
+NOVEDADES:
+18-5: Incorporación de WebApp de Google App Script para volcar el forms a Google Spreadsheets. Uso de fetch. 
+*Link del spreadsheets de prueba: https://tinyurl.com/formswebjs
+*Source del original code: https://github.com/levinunnink/html-form-to-google-sheet

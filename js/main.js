@@ -335,6 +335,8 @@ function imprimir(datosfilAll, lesiones) {
 `);
   resultados.appendChild(resultadosBtn);
 }
+
+
 window.addEventListener("load", function() {
   const form = document.getElementById('formularioccg');
   form.addEventListener("submit", function(e) {
@@ -347,8 +349,13 @@ window.addEventListener("load", function() {
       body: data,
     })
     .then(() => {
-      alert("Success!");
+      Swal.fire('Datos cargados exitosamente');
     })
-    .catch(error => console.error('Error!', error.message))
+    .catch(error => Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Error: sus datos no fueron cargados',
+      footer: '<a href="www.google.com.ar">¿Qué está pasando?</a>'
+    }))
   });
 });
