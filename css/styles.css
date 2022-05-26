@@ -57,6 +57,23 @@ body {
   padding: 1rem 0 1rem 0;
   text-decoration: underline; }
 
+.h__lg--underline {
+  font-family: "Jura", sans-serif;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  color: #463f3a;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  text-decoration: underline; }
+
+.h__xl {
+  font-family: "Jura", sans-serif;
+  font-weight: bolder;
+  font-size: 2.5rem;
+  color: #463f3a;
+  text-align: center;
+  padding: 1rem 0 1rem 0; }
+
 .p__sm {
   font-family: "Lato", sans-serif;
   font-size: 1rem;
@@ -211,10 +228,8 @@ footer {
 /*Formato imagenes*/
 .main__imagen--front {
   object-fit: cover;
-  border: 0.5rem double #463f3a;
-  border-radius: 0;
-  margin: 0.5rem 0 0.5rem 0.5rem;
-  border: solid; }
+  height: 16rem;
+  width: auto; }
 
 .main__imagen--news {
   border: 0.5rem double #463f3a;

@@ -15,6 +15,11 @@ Saludos,
 
 
 NOVEDADES:
-18-5: Incorporación de WebApp de Google App Script para volcar el forms a Google Spreadsheets. Uso de fetch. 
+18-5: Incorporación de WebApp de Google App Script (GAS) para volcar el forms a Google Spreadsheets. Uso de fetch. 
 *Link del spreadsheets de prueba: https://tinyurl.com/formswebjs
+*Link de la carpeta donde se alojan 
 *Source del original code: https://github.com/levinunnink/html-form-to-google-sheet
+26-5: Incorporacion de la API de newsfeed del U.S. Department of Health and Human Services para la section Aside. Actualizacion y puesta a punto del Spreadsheets. Creación de informes a través de los datos volcados del formulario con Google Docs vía GAS. 
+*Link del script de GAS: https://codeshare.io/AdJPNe
+*Link a la carpeta de informes automatizados: https://tinyurl.com/sd97sp5z
+*Link del spreadsheets donde se vuelca la información del formulario web: https://tinyurl.com/formswebjs

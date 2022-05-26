@@ -93,8 +93,10 @@
 
  .main__imagen--front {
    object-fit: cover;
-   @include bordered ($color: $color-border-regular, $width: $space-xs, $radius: 0);
-   border: solid;
+   //@include bordered ($color: $color-border-regular, $width: $space-xs, $radius: 0);
+   //border: solid;
+   height: 16rem;
+   width: auto;
  }
 
  .main__imagen--news {

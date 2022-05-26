@@ -36,7 +36,7 @@
 
   <header>
     <div class="header__banner">
-      <a href="index.html"> <img class="header__logo animate__animated animate__jello" src="../images/logo.jpg"></a>
+      <a href="../index.html"> <img class="header__logo animate__animated animate__jello" src="../images/logo.jpg"></a>
       <h1 class="header__titulo animate__animated animate__bounce">Informes de Cateterismo<br
           class="d-lg-none d-xl-none" /> Hemodinamia</h1>
     </div>
@@ -84,26 +84,26 @@
     <div class="container-fluid">
       <div id="formulario" class="">
         <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
-          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off" action="https://script.google.com/macros/s/AKfycbw9G8w66udBW6eMKdqq_wWqQlw14jP1_i0ThHUo9dck-R8KAm6pkfFcsl4zjKA7tArlRw/exec">
+          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off" action="https://script.google.com/macros/s/AKfycbzbDYoVgQUa1b7ions-tGqFX8nFXg1UaMIC6X7GM56bVoks4BsibHL5nOyG7jOdhOP8hw/exec">
             <div class="col-md-4">
               <label class="form-label form__recetas" for="name_form">Nombre y apellido</label>
-              <input type="text" class="form-control" id="name_form" name="nombre">
+              <input type="text" class="form-control" id="name_form" name="nombre" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="nroproc_form">Nro de procedimiento</label>
-              <input type="number" class="form-control" id="nroproc_form" name="nroproc">
+              <input type="number" class="form-control" id="nroproc_form" name="nroproc" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="date_form">Fecha del procedimiento</label>
-              <input type="date" class="form-control" id="date_form" name="fechaproc">
+              <input type="date" class="form-control" id="date_form" name="fechaproc" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="dni_form">DNI o documento</label>
-              <input type="number" class="form-control" id="dni_form" name="dni">
+              <input type="number" class="form-control" id="dni_form" name="dni" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="medsol_form">Médico o centro solicitante</label>
-              <input type="text" class="form-control" id="medsol_form" name="solicitante">
+              <input type="text" class="form-control" id="medsol_form" name="solicitante" required>
             </div>
             <div class="row g-3 justify-content-evenly">
               <div class="col-md-4">
@@ -124,7 +124,7 @@
                 <label class="form-check-label" for="acceso_cub">
                   Cubital
                 </label>
-                <input class="form-check-input" type="radio" name="acceso" id="acceso_rad_dist" value="radial_dist">
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_rad_dist" value="radial distal">
                 <label class="form-check-label" for="acceso_rad_dist">
                   Radial distal
                 </label>
@@ -148,15 +148,15 @@
                 <div class="row">
                   <label class="form-label form__recetas">Tamaño introductor</label>
                 </div>
-                <input class="form-check-input" type="radio" name="tamano" id="5fr_form" value="5fr">
+                <input class="form-check-input" type="radio" name="tamano" id="5fr_form" value="5 Fr">
                 <label class="form-check-label" for="5fr_form">
                   5 French
                 </label>
-                <input class="form-check-input" type="radio" name="tamano" id="6fr_form" value="6fr">
+                <input class="form-check-input" type="radio" name="tamano" id="6fr_form" value="6 Fr">
                 <label class="form-check-label" for="6fr_form">
                   6 French
                 </label>
-                <input class="form-check-input" type="radio" name="tamano" id="7fr_form" value="7fr">
+                <input class="form-check-input" type="radio" name="tamano" id="7fr_form" value="7 Fr">
                 <label class="form-check-label" for="7fr_form">
                   7 French
                 </label>
@@ -191,14 +191,14 @@
               </div>
 
               <div class="col-md-4">
-                <label class="form-label form__recetas" for="motivo_conv">Motivo de conversión</label>
+                <label class="form-label form__recetas" for="conversionwhy">Motivo de conversión</label>
                 <select class="form-select" id="motivo_conv" name="conversionwhy">
 
                   <option selected value="ninguno">Ninguno</option>
                   <option value="vasoespasmo">Vasoespasmo</option>
-                  <option value="inadecuado_soporte">Inadecuado soporte</option>
-                  <option value="mayor frenchaje">Necesidad de mayor frenchaje</option>
-                  <option value="tortuosidad subclavia">Excesiva tortuosidad subclavia</option>
+                  <option value="inadecuado soporte">Inadecuado soporte</option>
+                  <option value="necesidad de mayor frenchaje">Necesidad de mayor frenchaje</option>
+                  <option value="excesiva tortuosidad subclavia">Excesiva tortuosidad subclavia</option>
                   <option value="loop radial o braquial">Loop radial o braquial</option>
                 </select>
               </div>
@@ -206,12 +206,12 @@
                 <label class="form-label form__recetas" for="cateteres">Catéteres utilizados</label>
                 <div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="cateteres" value="tiger" id="tiger">
+                    <input class="form-check-input" type="checkbox" name="cateteres" value="Tiger 5Fr" id="tiger">
                     <label class="form-check-label" for="tiger">
                       Tiger
                     </label>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="cateteres" value="judkins" id="jljr_dx">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="JL/JR" id="jljr_dx">
                       <label class="form-check-label" for="jljr_dx">
                         JL/JR
                       </label>
@@ -219,13 +219,13 @@
                   </div>
                   <div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="cateteres" value="guia EBU" id="ebu">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="guía EBU" id="ebu">
                       <label class="form-check-label" for="ebu">
                         guía EBU
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="cateteres" value="guia JR" id="jr">
+                      <input class="form-check-input" type="checkbox" name="cateteres" value="guía JR" id="jr">
                       <label class="form-check-label" for="jr">
                         guía JR
                       </label>
@@ -236,7 +236,7 @@
               </div>
               <div class="col-md-4">
                 <label for="validationDefault01" class="form-label form__recetas">Dosis de heparina</label>
-                <input type="text" class="form-control" id="heparina" value="5000" name="heparina">
+                <input type="text" class="form-control" id="heparina" name="heparina" required>
               </div>
               <div class="col-md-4">
                 <label class="form-label form__recetas" for="rayos">Tiempo de radioscopia</label>
@@ -254,12 +254,12 @@
                 <label class="form-label form__recetas" for="operadores">Operadores</label>
                 <div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="operadores" value="bernal" id="bernal">
+                    <input class="form-check-input" type="checkbox" name="op1" value="bernal" id="bernal">
                     <label class="form-check-label">
                       Bernal
                     </label>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="operadores" value="ramos" id="ramos">
+                      <input class="form-check-input" type="checkbox" name="op2" value="ramosF" id="ramosF">
                       <label class="form-check-label">
                         Ramos
                       </label>
@@ -267,13 +267,13 @@
                   </div>
                   <div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="operadores" value="laino" id="laino">
+                      <input class="form-check-input" type="checkbox" name="op3" value="laino" id="laino">
                       <label class="form-check-label">
                         Laiño
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="operadores" value="payaslian"
+                      <input class="form-check-input" type="checkbox" name="op4" value="payaslian"
                         id="payaslian">
                       <label class="form-check-label">
                         Payaslian
@@ -320,53 +320,53 @@
   </main>
 
   <aside>
-    <h2 class="h__md">Próximos congresos</h2>
-    <div class="row row-cols-lg-1 row-cols-md-2 row-cols-sm-2 g-4">
+    <h2 class="h__md">Noticias en salud</h2>
+    <div class="d-none" id="noticias">
       <div class="col">
         <div class="card h-100 aside__card">
-          <img src="../images/noticias/pcr.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
-            <a href="#" class="card-title h5">PCR 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <a href="#" class="card-title h5"></a>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100 aside__card">
-          <img src="../images/noticias/tct.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
-            <a href="#" class="card-title h5">TCT 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <a href="#" class="card-title h5"></a>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col ">
         <div class="card h-100 aside__card d-lg-none">
-          <img src="../images/noticias/london.png" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
             <a href="#" class="card-title h5">London Valves</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col ">
         <div class="card h-100 aside__card d-lg-none">
-          <img src="../images/noticias/esc.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
             <a href="#" class="card-title h5">ESC Congress 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
@@ -427,6 +427,8 @@
   </script>
   <script src="https://kit.fontawesome.com/9b8325ff01.js" crossorigin="anonymous"></script>
   <script src="../js/main.js"></script>
+  <script src="../js/newsfeed.js">
+  </script>
 </body>
 
 </html>

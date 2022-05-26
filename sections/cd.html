@@ -25,23 +25,18 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://kit.fontawesome.com/9b8325ff01.js" crossorigin="anonymous"></script>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </head>
 
 <body class="grid-container">
 
-  <script>
-    scr = "js/wow.min.js"
-  </script>
-  <script>
-    new WOW().init();
-  </script>
+
 
   <header>
     <div class="header__banner">
-      <a href="index.html"> <img class="header__logo animate__animated animate__jello" src="../images/logo.jpg"></a>
+      <a href="../index.html"> <img class="header__logo animate__animated animate__jello" src="../images/logo.jpg"></a>
       <h1 class="header__titulo animate__animated animate__bounce">Informes de Cateterismo<br
           class="d-lg-none d-xl-none" /> Hemodinamia</h1>
     </div>
@@ -85,10 +80,11 @@
 
   <main>
     <h2 class="h__md">Informe de cateterismo derecho</h2>
-
+    <div class="btn btn-primary center__map" onclick="calculos()">Ingresar datos</div> 
+    
     <div class="container-fluid">
       <h2 class="h__md--underline">Resumen de datos ingresados y calculados</h2>
-
+      
 
       <table class="table table-sm table-hover table-striped m-3 p-3">
           <thead class="t-head-light p__md--strong">
@@ -291,53 +287,53 @@
   </main>
 
   <aside>
-    <h2 class="h__md">Próximos congresos</h2>
-    <div class="row row-cols-lg-1 row-cols-md-2 row-cols-sm-2 g-4">
+    <h2 class="h__md">Noticias en salud</h2>
+    <div class="d-none" id="noticias">
       <div class="col">
         <div class="card h-100 aside__card">
-          <img src="../images/noticias/pcr.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
-            <a href="#" class="card-title h5">PCR 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <a href="#" class="card-title h5"></a>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100 aside__card">
-          <img src="../images/noticias/tct.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
-            <a href="#" class="card-title h5">TCT 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <a href="#" class="card-title h5"></a>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col ">
         <div class="card h-100 aside__card d-lg-none">
-          <img src="../images/noticias/london.png" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
             <a href="#" class="card-title h5">London Valves</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
       <div class="col ">
         <div class="card h-100 aside__card d-lg-none">
-          <img src="../images/noticias/esc.jpg" class="card-img-top aside__imagen" alt="...">
+          <img src="" class="card-img-top aside__imagen" alt="...">
           <div class="card-body">
             <a href="#" class="card-title h5">ESC Congress 2022</a>
-            <p class="card-text">Conocé las fechas y deadline para presentación de trabajos aquí</p>
+            <p class="card-text">Hace click para obtener más información</p>
           </div>
           <div class="card-footer">
-            <small class="text-muted">12-04-22</small>
+            <small class="text-muted fecha_news"></small>
           </div>
         </div>
       </div>
@@ -396,7 +392,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
+  <!-- <script src="../js/main.js">
+  </script> -->
   <script src="../js/cd.js">
+  </script>
+  <script src="../js/newsfeed.js">
   </script>
 </body>
 

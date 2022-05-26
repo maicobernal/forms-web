@@ -33,6 +33,15 @@ body {
   text-decoration: underline;
 }
 
+.h__lg--underline {
+  @include title($size:$font-h-lg);
+  text-decoration: underline;
+}
+
+.h__xl {
+  @include title($size:$font-h-xl);
+}
+
 .p__sm {
   @include text;
 }

@@ -1,6 +1,5 @@
  //Cateterismo derecho
-
- calculos();
+  
 
  function units1() {
      let unidades = ["", "", "Kg", "Cms", "", "g/dL", "%", "%", "lts/min", "lts/min/m2sc", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "dyn*s/cm5", "UW", "dyn*s/cm5","UW"];

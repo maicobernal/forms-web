@@ -1,5 +1,4 @@
 //Informe CCG
-
 let datosfilAll = [];
 let lesiones = [];
 
@@ -30,10 +29,13 @@ function agregarLesion() {
       <select class="form-select" id="lesion${i}_vaso" name="lesion${i}_vaso">
         <option selected value="0">Elegir...</option>
         <option value="TCI">TCI</option>
-        <option value="DA">DA</option>
-        <option value="Cx">Cx</option>
+        <option id="DA_lesiones" value="DA">DA</option>
+        <option value="Dg">Ramo diagonal de DA</option>
+        <option id="Cx_lesiones" value="Cx">Cx</option>
+        <option value="Mg">Ramo marginal de Cx</option>
         <option value="Ramus">Ramus</option>
-        <option value="CD">CD</option>
+        <option id="CD_lesiones" value="CD">CD</option>
+        <option value="PVCD">Ramo posteroventricular de CD</option>
       </select>
     </div>
 
@@ -57,8 +59,8 @@ function agregarLesion() {
     <div class="input-group">
       <select class="form-select" id="lesion${i}_calcio" name="lesion${i}_calcio">
         <option value="ninguno" selected>Ninguna</option>
-        <option value="moderado">Moderada</option>
-        <option value="severo">Severa</option>
+        <option value="moderada">Moderada</option>
+        <option value="severa">Severa</option>
       </select>
       <label class="input-group-text">Calcio</label>
     </div>
@@ -84,6 +86,9 @@ function agregarLesion() {
   contenedorLesiones.appendChild(divLesion);
   cambiarBtn();
 }
+
+
+
 
 function borrarLesion(e) {
   let posicion = e;
@@ -259,6 +264,15 @@ let nombres = {
 let resultados = document.querySelector("#resultados");
 
 function imprimir(datosfilAll, lesiones) {
+  const repeticiones = ["DA", "CD", "Cx"];
+  if (nroLesiones > 0){
+  for (const rep of repeticiones){
+    if (document.querySelectorAll(`#${rep}_lesiones`).length = 2){
+      (document.querySelectorAll(`#${rep}_lesiones`)[1].value = `${rep}2`)
+    }
+  }
+}
+  
   resultados.innerHTML = (
     `<div><h2 class="h__md">Resultados preliminares del informe</h2>
     <table class="table table-sm table-hover table-striped">
@@ -351,7 +365,7 @@ window.addEventListener("load", function() {
     .then(() => {
       Swal.fire('Datos cargados exitosamente');
     })
-    .catch(error => Swal.fire({
+    .catch(() => Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'Error: sus datos no fueron cargados',
