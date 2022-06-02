@@ -80,208 +80,201 @@
 
   <main>
     <h2 class="h__md">Informe de cateterismo derecho</h2>
-    <div class="btn btn-primary center__map" onclick="calculos()">Ingresar datos</div> 
-    
     <div class="container-fluid">
-      <h2 class="h__md--underline">Resumen de datos ingresados y calculados</h2>
-      
+      <div id="formulario" class="">
+        <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
+          <form class="row g-3 justify-content-evenly" id="formulariocd" name="formulariocd" autocomplete="off" action="">
+            <div class="col-md-4">
+              <label class="form-label form__recetas" for="name_form">Nombre y apellido</label>
+              <input type="text" class="form-control" id="name_form" name="nombre" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas" for="nroproc_form">Nro de procedimiento</label>
+              <input type="text" class="form-control" id="nroproc_form" name="nroproc" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas" for="date_form">Fecha del procedimiento</label>
+              <input type="date" class="form-control" id="date_form" name="fechaproc" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas" for="dni_form">DNI o documento</label>
+              <input type="text" class="form-control" id="dni_form" name="dni" required>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas" for="medsol_form">Médico o centro solicitante</label>
+              <input type="text" class="form-control" id="medsol_form" name="solicitante" required>
+            </div>
+            <div class="col-md-4">
+              <div class="row g-3 justify-content-evenly">
+                <label class="form-label form__recetas" for="acceso">Acceso</label>
+              </div>
+              <div>
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_cef" value="cefálico">
+                <label class="form-check-label" for="acceso_cef">
+                  Cefálico
+                </label>
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_fem" value="femoral">
+                <label class="form-check-label" for="acceso_fem">
+                  Femoral
+                </label>
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_yug" value="yugular">
+              <label class="form-check-label" for="acceso_yug">
+                Yugular
+              </label>
+              </div>
+              
+            </div>
+            <div class="row g-3 justify-content-evenly">
+              
 
-      <table class="table table-sm table-hover table-striped m-3 p-3">
-          <thead class="t-head-light p__md--strong">
-              <tr>
-                  <td>
-                      Variable
-                  </td>
-                  <td>
-                      Resultado
-                  </td>
-              </tr>
-          </thead>
-          <tbody class="p__md--strong">
-              <tr>
-                  <td>
-                      Nombre y apellido
-                  </td>
-                  <td id="0">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Número historia clínica
-                  </td>
-                  <td id="1">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Peso
-                  </td>
-                  <td id="2">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Altura
-                  </td>
-                  <td id="3">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Superficie corporal
-                  </td>
-                  <td id="4">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Hemoglobina
-                  </td>
-                  <td id="5">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Sat. Arterial
-                  </td>
-                  <td id="6">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Sat. Art. Pulmonar
-                  </td>
-                  <td id="7">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Gasto Cardíaco
-                  </td>
-                  <td id="8">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Indice cardíaco
-                  </td>
-                  <td id="9">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      TA sistólica
-                  </td>
-                  <td id="10">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      TA diastólica
-                  </td>
-                  <td id="11">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Presión Art. Pulm. Sistólica
-                  </td>
-                  <td id="12">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Presión Art. Pulm. Diastólica
-                  </td>
-                  <td id="13">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Presión de enclavamiento
-                  </td>
-                  <td id="14">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Presión de aurícula derecha
-                  </td>
-                  <td id="15">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      TA media
-                  </td>
-                  <td id="16">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      Pr. Art. Pulm. Media
-                  </td>
-                  <td id="17">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      RVS dinas
-                  </td>
-                  <td id="18">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      RVS woods
-                  </td>
-                  <td id="19">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      RVP dinas
-                  </td>
-                  <td id="20">
-  
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      RVP woods
-                  </td>
-                  <td id="21">
-  
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  
-  
-  
-  
-      <div class="p__md--strong"><a href="https://es.wikipedia.org/wiki/Cateterismo_card%C3%ADaco_derecho">Link con más información acerca de como interpretar los resultados</a></div>
+              <div class="col-md-4">
+                <div class="row">
+                  <label class="form-label form__recetas">Localización</label>
+                </div>
 
+                <input class="form-check-input" type="radio" name="localizacion" id="acceso_der" value="derecho">
+                <label class="form-check-label" for="acceso_der">
+                  Derecho
+                </label>
+                <input class="form-check-input" type="radio" name="localizacion" id="acceso_izq" value="izquierdo">
+                <label class="form-check-label" for="acceso_izq">
+                  Izquierdo
+                </label>
+              </div>
+             
+
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label form__recetas">Dosis de heparina</label>
+                <input type="text" class="form-control" id="heparina" name="heparina" required>
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas" for="rayos">Tiempo de radioscopia</label>
+                <input type="text" class="form-control" id="rayos" name="rayos">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas" for="mgy">Dosis de mGy</label>
+                <input type="text" class="form-control" id="mgy" name="mgy">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Tiempo de subida del catéter</label>
+                <input type="text" class="form-control" id="tiemposubida" name="tiemposubida">
+              </div>
+              <div class="col-md-4">
+                <label class="form-label form__recetas" for="operadores">Operadores</label>
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="operadores" value="Bernal" id="bernal">
+                    <label class="form-check-label">
+                      Bernal
+                    </label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="Ramos" id="ramosF">
+                      <label class="form-check-label">
+                        Ramos
+                      </label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="Laino" id="laino">
+                      <label class="form-check-label">
+                        Laiño
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" name="operadores" value="Payaslian"
+                        id="payaslian">
+                      <label class="form-check-label">
+                        Payaslian
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-4">
+                <label class="form-label form__recetas">Complicaciones</label>
+                <input type="text" class="form-control" id="complicaciones" value="Ninguna" name="complicaciones">
+              </div>
+            </div>
+            <hr>
+            <div class="col-md-4">  
+              <label class="form-label form__recetas">Peso</label>
+              <input type="number" class="form-control" id="peso" name="peso" value="90">
+              <label class="form-label form__recetas">Altura</label>
+              <input type="number" class="form-control" id="altura" name="altura" value="190">
+              <label class="form-label form__recetas">Frecuencia cardíaca</label>
+              <input type="number" class="form-control" id="fc" name="fc"  value="90">
+              <label class="form-label form__recetas">Hemoglobina en g/dL</label>
+              <input type="number" class="form-control" id="hb" name="hb"  value="14">
+              
+            </div>
+            <div class="col-md-4">  
+              <label class="form-label form__recetas">Presión arterial sistólica en mmHg</label>
+              <input type="number" class="form-control" id="tas" name="tas" value="140">
+              <label class="form-label form__recetas">Presión arterial diastólica en mmHg</label>
+              <input type="number" class="form-control" id="tad" name="tad" value="90">
+              <label class="form-label form__recetas">Presión sistólica de arteria pulmonar</label>
+              <input type="number" class="form-control" id="aps" name="aps" value="90">
+              <label class="form-label form__recetas">Presión diastólica de arteria pulmonar</label>
+              <input type="number" class="form-control" id="apd" name="apd" value="60">
+              <label class="form-label form__recetas">Presión wedge en mmHg</label>
+              <input type="number" class="form-control" id="wedge" name="wedge" value="16">
+            </div>
+            <div class="col-md-4">  
+              
+              <label class="form-label form__recetas">Presión sistólica de VD</label>
+              <input type="number" class="form-control" id="vds" name="vds" value="90">
+              <label class="form-label form__recetas">Presión diastólica de VD</label>
+              <input type="number" class="form-control" id="vdd" name="vdd" value="60">
+              
+              <label class="form-label form__recetas">Presión de aurícula derecha en mmHg</label>
+              <input type="number" class="form-control" id="ad" name="ad" value="25">
+              <label class="form-label form__recetas">Presión de aurícula izquierda en mmHg</label>
+              <input type="number" class="form-control" id="ai" name="ai" value="16">
+            </div>
+            <hr>
+            <div class="col-md-4">
+              
+              <label class="form-label form__recetas">Saturación arterial O2</label>
+              <input type="number" class="form-control" id="sato2" name="sato2" value="99">
+              <label class="form-label form__recetas">Saturación arteria pulmonar</label>
+              <input type="number" class="form-control" id="satap" name="satap" value="69">
+              <label class="form-label form__recetas">Saturación % VCS</label>
+              <input type="number" class="form-control" id="satvcs" name="satvcs" value="66">
+              <label class="form-label form__recetas">Saturación % VCI</label>
+              <input type="number" class="form-control" id="satvci" name="satvci"value="66">
+              
+            </div>
+            <div class="col-md-4">
+              <label class="form-label form__recetas">Saturación % AD alta</label>
+              <input type="number" class="form-control" id="satada" name="satada"value="66">
+              <label class="form-label form__recetas">Saturación % AD media</label>
+              <input type="number" class="form-control" id="satadm" name="satadm"value="66">
+              <label class="form-label form__recetas">Saturación % AD baja</label>
+              <input type="number" class="form-control" id="satadb" name="satadb"value="66">
+              <label class="form-label form__recetas">Saturación % VD</label>
+              <input type="number" class="form-control" id="satvd" name="satvd"value="66">
+            </div>
+            <hr>
+
+          </div>
+
+            <div id="lesiones_cards">
+            </div>
+
+            <div class="container center p-3" id="botones">
+            </div>
+
+            <div id="resultados" class="d-block center">
+            <div class="btn btn-primary" onclick="procesar()">Procesar datos</div> 
+            <div class="btn btn-secondary" type="reset">Limpiar datos</div>
+          </div>
+          <div id="resultadoscd" class="d-block center center__object">
+          </div>
+          </form>
+        </div>
+      </div>
     </div>
 
   </main>

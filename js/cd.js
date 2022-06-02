@@ -1,166 +1,195 @@
  //Cateterismo derecho
+
+ const nombresvariables_num = ["peso", "altura", "fc", "hb", "tas", "tad", "aps", "apd", "wedge", "vds", "vdd", "ad", "ai", "sato2", "satap", "satvcs", "satvci", "satada", "satadm", "satadb", "satvd"];
+ const nombresvariables_text = ["nombre", "nroproc", "fecha", "dni", "medsol", "acceso_cef", "acceso_fem", "acceso_yug", "acceso_der", "acceso_izq", "heparina", "rayos", "mgy", "tiemposubida", "op1", "op2", "op3", "op4", "complicaciones"];
+ const objeto = {}; //Acá van todas las variables ingresadas con su ID y valor
+ const objeto_num = {};
+ const objeto_text = {}; 
+ const datosingresados_num = [];
+ const datosingresados_text = [];
+
+ function procesar() {
+     const container = document.querySelector("#formulariocd")
+     const inputsnum = container.querySelectorAll('input[type="number"]')
+     const inputsother = container.querySelectorAll('input:not([type="number"])')
+     for (i = 0; i <= inputsnum.length; i++) {
+         if (inputsnum[i] != undefined) {
+             datosingresados_num.push(parseInt(inputsnum[i].value))
+         } /* else {
+             alert("Ingrese todos los datos")
+         } */
+     }
+     for (i = 0; i <= inputsother.length; i++) {
+        if (inputsother[i] != undefined) {
+            datosingresados_text.push((inputsother[i].value))
+        } /* else {
+            alert("Ingrese todos los datos")
+        } */
+    }
+     nombresvariables_num.forEach((element, index) => {
+         objeto_num[element] = datosingresados_num[index];
+     });
+     nombresvariables_text.forEach((element, index) => {
+        objeto_text[element] = datosingresados_text[index];
+    });
+
+    calcular(objeto_num)
+ }
+ 
+
+ function calcular (objeto_num){
+ objeto_num["supcorp"] = Math.sqrt(objeto_num.peso * objeto_num.altura / 3600).toFixed(2)
+ objeto_num["contarto2"] = (1.34 * objeto_num.hb * objeto_num.sato2 / 100);
+ objeto_num["contveno2"] = (1.34 * objeto_num.hb * objeto_num.satap / 100);
+ objeto_num["difartven"] = objeto_num.contarto2 - objeto_num.contveno2;
+ objeto_num["vo2"] = objeto_num.supcorp * 125;
+ objeto_num["gc"] = (objeto_num.vo2 / objeto_num.difartven / 10).toFixed(2);
+ objeto_num["ic"] = (objeto_num.gc / objeto_num.supcorp * 1).toFixed(2);
+ objeto_num["pr_tam_int"] = (objeto_num.tas - objeto_num.tad / 3);
+ objeto_num["tam"] = ((objeto_num.tad) + objeto_num.pr_tam_int).toFixed(0);
+ objeto_num["pr_apm_int"] = ((objeto_num.aps - objeto_num.apd) / 3);
+ objeto_num["apm"] = ((objeto_num.apd) + objeto_num.pr_apm_int).toFixed(0);
+ objeto_num["rvsdin"] = ((objeto_num.tam - objeto_num.ad) * 79.92 / objeto_num.gc).toFixed(0);
+ objeto_num["rvswood"] = (objeto_num.rvsdin / 80).toFixed(2);
+ objeto_num["rvpdin"] = ((objeto_num.apm - objeto_num.wedge) * 79.92 / objeto_num.gc).toFixed(0);
+ objeto_num["rvpwood"] = (objeto_num.rvpdin / 80).toFixed(2);
+  imprimir()
+ }
+
+ //const unidadespreview = ["", "", "Kg", "Cms", "", "g/dL", "%", "%", "lts/min", "lts/min/m2sc", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "dyn*s/cm5", "UW", "dyn*s/cm5", "UW"];
+
+ 
+ 
+ function acceso_sel() {
+    return (document.getElementById("acceso_yug").checked && "yugular") || (
+      document.getElementById("acceso_fem").checked && "femoral") || (
+      document.getElementById("acceso_cef").checked && "cefálico") ;
+  }
+  function derizq_sel() {
+    return (document.getElementById("acceso_der").checked && "derecho") || (
+      document.getElementById("acceso_izq").checked && "izquierdo")
+  }
+
+ const nombrespreview = {
+    nombre: "Nombre y apellido",
+    nroproc: "Nro de procedimiento",
+    fecha: "Fecha del procedimiento",
+    dni: "DNI o documento",
+    medsol: "Médico o centro solicitante",
+    accesosummary: "Acceso utilizado",
+    heparina: "Dosis de heparina en UI",
+    rayos: "Duración de radioscopia",
+    mgy: "Dosis de kerma en el aire",
+    tiemposubida: "Tiempo de subida del catéter",
+    opsummary: "Operadores",
+    compresion: "Retiro del introductor",
+    complicaciones: "Complicaciones durante el procedimiento",
+    peso: "Peso", 
+    altura: "Altura", 
+    fc: "Frecuencia cardíaca", 
+    hb: "Hemoglobina en g/dL", 
+    tas: "TA sistólica", 
+    tad: "TA diastólica", 
+    tam: "TA media", 
+    aps: "Presión arteria pulmonar sistólica", 
+    apd: "Presión arteria pulmonar diastólica",
+    apm: "Presión media arteria pulmonar",
+    wedge: "Presión wedge/enclavamiento",
+    vds: "Presión sistólica ventrículo derecho",
+    vdd: "Presión diastólica ventrículo derecho",
+    ad: "Presión media aúricula derecha",
+    ai: "Presión de aurícula izquierda",
+    sato2: "Saturación arterial de oxígeno",
+    satap: "Saturación de arteria pulmonar",
+    satvcs: "Saturación VCS",
+    satvci: "Saturación VCI",
+    satada: "Saturación AD alta",
+    satadm: "Saturación AD media",
+    satadb: "Saturación AD baja",
+    satvd: "Saturación VD",
+    supcorp: "Área de superficie corporal",
+    vo2: "VO2",
+    gc: "Gasto cardíaco",
+    ic: "Índice cardíaco",
+    rvswood: "Resistencia vascular sistémica - Wood",
+    rvsdin: "Resistencia vascular sistémica - Dinas",
+    rvpwood: "Resistencia vascular pulmonar - Wood",
+    rvpdin: "Resistencia vascular pulmonar - Dinas"    
+  }
+
+  let resultados = document.querySelector("#resultadoscd");
   
+  let operadores = []
 
- function units1() {
-     let unidades = ["", "", "Kg", "Cms", "", "g/dL", "%", "%", "lts/min", "lts/min/m2sc", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "mmHg", "dyn*s/cm5", "UW", "dyn*s/cm5","UW"];
-     return unidades;
+
+  function imprimir() {
+    objeto_text["accesosummary"] = acceso_sel() + " " + derizq_sel();
+    document.getElementsByName("operadores").forEach((x) => operadores.push(((x.checked || "") && x.value)));
+    objeto_text["opsummary"] = String(operadores).toUpperCase().replace(/[^a-zA-Z]/g," ");
+
+    const todelete_text = ["acceso_cef", "acceso_fem", "acceso_yug", "acceso_der", "acceso_izq","op1", "op2", "op3", "op4"]
+    todelete_text.forEach((item)=> delete objeto_text[item]);
+    const todelete_num = ["contarto2","contveno2","difartven","vo2","pr_tam_int","pr_apm_int"];
+    todelete_num.forEach((item)=> delete objeto_num[item]);
+
+    resultados.innerHTML = (
+      `<div><h2 class="h__md">Resultados preliminares del informe</h2>
+      <table class="table table-sm table-hover table-striped">
+          <thead class="t-head-light p__md--strong center">
+                   <td>
+                      Variable
+                  </td>
+                  <td>
+                      Dato ingresado
+                  </td>
+          </thead>
+          <tbody class="p__md--strong center" id="tablacd">
+          </tbody>
+      </table>
+  </div>
+  <div id="tablas_preanalisis">
+  </div>`)
+    let data1 = objeto_text
+    let str0 = "";
+    for (dato in data1) {
+      str0 += "<tr>";
+      str0 += "<td>" + nombrespreview[dato] + "</td>";
+      str0 += "<td>" + String(data1[dato]).toUpperCase() + "</td>";
+      str0 += "</tr>";
+  }
+
+  let data2 = objeto_num
+  for (dato in data2) {
+    str0 += "<tr>";
+    str0 += "<td>" + nombrespreview[dato] + "</td>";
+    str0 += "<td>" + data2[dato] + "</td>";
+    str0 += "</tr>";
+}
+document.querySelector('#tablacd').innerHTML = str0;
+
+  let resultadosBtn = document.createElement("div");
+    resultadosBtn.innerHTML = (`<button class="btn btn-primary mt-2" onclick= mandar()>Finalizar y enviar</button>
+  <button class="btn btn-secondary mt-2" type="reset">Borrar todo</button>
+  `);
+    resultados.appendChild(resultadosBtn);
+}
+
+function mandar(){
+    const objeto_tosend = {...objeto_num, ...objeto_text};
+    const action = 'https://script.google.com/macros/s/AKfycbyEbgJMFaGt-7neJ_jNp-6j-yFrm-lR7-XExQv7YeY4rJaALqRWbV6PN7WpNXa-FrgKkg/exec'
+    fetch(action, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(objeto_tosend)
+      })
+      .then(() => {
+        Swal.fire('Datos cargados exitosamente');
+      })
+      .catch(() => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error: sus datos no fueron cargados',
+        footer: '<a href="www.google.com.ar">¿Qué está pasando?</a>'
+      }))
  }
-
- function calculos() {
-     let datos = [];
-     datos.push(prompt("Ingrese nombre del paciente ")); //0
-     if (isNaN(datos[0]) == false || datos[0] == "") {
-         alert("Nombre incorrecto");
-         datos.splice(-1);
-         calculos();
-     } else {
-         ingresarNHC(datos);
-     }
- }
-
- function ingresarNHC(datos) {
-     datos.push(Number(prompt("Ingrese número de historia clinica del paciente"))); //1
-     if (datos.includes(NaN) == true || datos.includes(0) == true)  {
-         alert("Nro de HC incorrecto");
-         datos.splice(-1);
-         ingresarNHC(datos);
-     } else {
-         seleccionarCalculo(datos);
-     }
- }
-
- function seleccionarCalculo(datos) {
-     console.log("1: Calcular superficie corporal");
-     console.log("2: Calcular gasto cardiaco");
-     console.log("3: Calcular resistencias");
-     console.log("4: Ver resumen de todos los datos ingresados");
-     console.log("5: Salir");
-     console.log("------------------------");
-
-     let op = prompt("Ingresar Opcion");
-     switch (op) {
-         case "1":
-             datos.push(Number(prompt("Ingrese Peso en Kg"))); //2
-             datos.push(Number(prompt("Ingrese Altura en Cms"))); //3
-             if (datos.includes(NaN) == true || datos.includes(0) == true)  {
-                 alert("Datos incorrectos");
-                 datos.splice(-2);
-                 seleccionarCalculo(datos);
-             } else {
-                 calcularSC(datos);
-             }
-             break;
-         case "2":
-             if (datos[4] == undefined) {
-                 alert("Primero calcular superficie corporal"); //4
-                 seleccionarCalculo();
-             } else {
-                 datos.push(Number(prompt("Ingrese Hemoglobina en g/dL"))); //5 
-                 datos.push(Number(prompt("Ingrese saturación arterial de O2"))); //6
-                 datos.push(Number(prompt("Ingrese saturación pulmonar de O2"))); //7
-                 if (datos.includes(NaN) == true || datos.includes(0) == true)  {
-                     alert("Datos incorrectos");
-                     datos.splice(-3);
-                     seleccionarCalculo(datos);
-                 } else {
-                     calcularGC(datos)
-                 }
-             }
-             break;
-         case "3":
-             if (datos[5] == undefined || datos[9] == undefined) {
-                 alert("Primero calcular superficie corporal y gasto cardíaco");
-                 seleccionarCalculo();
-             } else {
-                 datos.push(Number(prompt("Ingrese presión arterial sistólica en mmHg"))); //10
-                 datos.push(Number(prompt("Ingrese presión arterial diastólica en mmHg"))); //11
-                 datos.push(Number(prompt("Ingrese presión arterial pulmonar sistólica en mmHg"))); //12
-                 datos.push(Number(prompt("Ingrese presión arterial pulmonar diastólica en mmHg"))); //13
-                 datos.push(Number(prompt("Ingrese presión Wedge en mmHg"))); //14
-                 datos.push(Number(prompt("Ingrese presión media de aurícula derecha en mmHg"))); //15
-                 if (datos.includes(NaN) == true || datos.includes(0) == true) {
-                     alert("Datos incorrectos");
-                     datos.splice(-6);
-                     seleccionarCalculo(datos);
-                 } else {
-                     calcularRV(datos)
-                 }
-             }
-             break;
-         case "4":
-             if (datos[20] == undefined) {
-                 alert("Debe ingresar primero todos los datos para poder ver el resumen");
-                 seleccionarCalculo(datos);
-             } else {
-                 escribirDatos(datos);
-             }
-             break;
-         case "5":
-             salir();
-             break;
-         default:
-             console.log("Operacion Invalida");
-             break;
-     }
- }
-
- function calcularSC(datos) {
-     if (datos[2] == isNaN || datos[3] == isNaN) {
-         alert("Ingrese peso y altura correctos en kgs y cms");
-     } else {
-         datos.push((Math.sqrt(datos[2] * datos[3] / 3600)).toFixed(2)); //4 SC
-         alert("La superficie corporal calculada es  " + datos[4]);
-     }
-     seleccionarCalculo(datos);
- }
-
- function calcularGC(datos) {
-     if (datos[5] == isNaN || datos[6] == isNaN || datos[7] == isNaN) { //5 Hb - 6 Art - 7 AP
-         alert("Ingrese valores de hemoglobina y saturaciones correctos");
-     } else {
-         let contarto2 = (1.34 * datos[5] * datos[6] / 100);
-         let contveno2 = (1.34 * datos[5] * datos[7] / 100);
-         let difartven = (contarto2 - contveno2);
-         let vo2 = (datos[4] * 125);
-         datos.push((vo2 / difartven / 10).toFixed(2)); //8 GC
-         datos.push((datos[8] / datos[4] * 1).toFixed(2)); //9 IC
-         alert("El gasto cardíaco calculado es " + datos[8]);
-         alert("El índice cardíaco calculado es " + datos[9]);
-     }
-     seleccionarCalculo(datos);
- }
-
- function calcularRV(datos) {
-     if (datos[10] == isNaN || datos[11] == isNaN || datos[12] == isNaN || datos[13] == isNaN || datos[14] == isNaN || datos[15] == isNaN) {
-         alert("Ingrese sistolica y diastólica arterial y pulmonar y presión Wedge y de aurícula derecha para poder realizar los cálculos")
-         seleccionarCalculo();
-     } else { // 10 TAS - 11 TAD - 12 PS - 13 PD - 14 W - 15 AD
-         let pr_tam_int = ((datos[10] - datos[11]) / 3);
-         datos.push((datos[11] + pr_tam_int).toFixed(0)); //16 TAM
-         let pr_apm_int = ((datos[12] - datos[13]) / 3);
-         datos.push((datos[13] + pr_apm_int).toFixed(0)); //17 APM
-         datos.push(((datos[16] - datos[15]) * 79.92 / datos[8]).toFixed(0)); //18 RVS din
-         datos.push((datos[18] / 80).toFixed(2)); //19 RVS w
-         datos.push(((datos[17] - datos[14]) * 79.92 / datos[8]).toFixed(0)); //20 RVP din
-         datos.push((datos[20] / 80).toFixed(2)); //21 RVP W
-         alert("Las resistencias vasculares en dynas son: RVS: " + datos[18] + " y RVP: " + datos[20]);
-         alert("Las resistencias vasculares en woods son: RVS: " + datos[19] + " y RVP: " + datos[21]);
-     }
-     seleccionarCalculo(datos);
- };
-
- function escribirDatos(datos) {
-     let units = units1();
-     if (datos[20] == NaN) {
-         alert("Debe completar todos los datos primero");
-         seleccionarCalculo();
-     } else {
-         for (i = 0; i <= 21; i++) {
-             document.getElementById(i).innerHTML = datos[i] + " " + units[i];
-         }
-     }
- };
-
- function salir() {
-     alert("Fin de la operacion")
- };
+ 
