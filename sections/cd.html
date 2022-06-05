@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://kit.fontawesome.com/9b8325ff01.js" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 </head>
@@ -86,30 +87,30 @@
           <form class="row g-3 justify-content-evenly" id="formulariocd" name="formulariocd" autocomplete="off" action="">
             <div class="col-md-4">
               <label class="form-label form__recetas" for="name_form">Nombre y apellido</label>
-              <input type="text" class="form-control" id="name_form" name="nombre" required>
+              <input type="text" class="form-control" id="name_form" name="name_form" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="nroproc_form">Nro de procedimiento</label>
-              <input type="text" class="form-control" id="nroproc_form" name="nroproc" required>
+              <input type="text" class="form-control" id="nroproc_form" name="nroproc_form" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="date_form">Fecha del procedimiento</label>
-              <input type="date" class="form-control" id="date_form" name="fechaproc" required>
+              <input type="date" class="form-control" id="date_form" name="date_form" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="dni_form">DNI o documento</label>
-              <input type="text" class="form-control" id="dni_form" name="dni" required>
+              <input type="text" class="form-control" id="dni_form" name="dni_form" required>
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas" for="medsol_form">Médico o centro solicitante</label>
-              <input type="text" class="form-control" id="medsol_form" name="solicitante" required>
+              <input type="text" class="form-control" id="medsol_form" name="medsol_form" required>
             </div>
             <div class="col-md-4">
               <div class="row g-3 justify-content-evenly">
                 <label class="form-label form__recetas" for="acceso">Acceso</label>
               </div>
               <div>
-                <input class="form-check-input" type="radio" name="acceso" id="acceso_cef" value="cefálico">
+                <input class="form-check-input" type="radio" name="acceso" id="acceso_cef" value="cefalico">
                 <label class="form-check-label" for="acceso_cef">
                   Cefálico
                 </label>
@@ -200,61 +201,61 @@
             <hr>
             <div class="col-md-4">  
               <label class="form-label form__recetas">Peso</label>
-              <input type="number" class="form-control" id="peso" name="peso" value="90">
+              <input type="number" class="form-control" id="peso" name="peso">
               <label class="form-label form__recetas">Altura</label>
-              <input type="number" class="form-control" id="altura" name="altura" value="190">
+              <input type="number" class="form-control" id="altura" name="altura">
               <label class="form-label form__recetas">Frecuencia cardíaca</label>
-              <input type="number" class="form-control" id="fc" name="fc"  value="90">
+              <input type="number" class="form-control" id="fc" name="fc">
               <label class="form-label form__recetas">Hemoglobina en g/dL</label>
-              <input type="number" class="form-control" id="hb" name="hb"  value="14">
+              <input type="number" class="form-control" id="hb" name="hb">
               
             </div>
             <div class="col-md-4">  
               <label class="form-label form__recetas">Presión arterial sistólica en mmHg</label>
-              <input type="number" class="form-control" id="tas" name="tas" value="140">
+              <input type="number" class="form-control" id="tas" name="tas">
               <label class="form-label form__recetas">Presión arterial diastólica en mmHg</label>
-              <input type="number" class="form-control" id="tad" name="tad" value="90">
+              <input type="number" class="form-control" id="tad" name="tad">
               <label class="form-label form__recetas">Presión sistólica de arteria pulmonar</label>
-              <input type="number" class="form-control" id="aps" name="aps" value="90">
+              <input type="number" class="form-control" id="aps" name="aps">
               <label class="form-label form__recetas">Presión diastólica de arteria pulmonar</label>
-              <input type="number" class="form-control" id="apd" name="apd" value="60">
+              <input type="number" class="form-control" id="apd" name="apd">
               <label class="form-label form__recetas">Presión wedge en mmHg</label>
-              <input type="number" class="form-control" id="wedge" name="wedge" value="16">
+              <input type="number" class="form-control" id="wedge" name="wedge">
             </div>
             <div class="col-md-4">  
               
               <label class="form-label form__recetas">Presión sistólica de VD</label>
-              <input type="number" class="form-control" id="vds" name="vds" value="90">
+              <input type="number" class="form-control" id="vds" name="vds">
               <label class="form-label form__recetas">Presión diastólica de VD</label>
-              <input type="number" class="form-control" id="vdd" name="vdd" value="60">
+              <input type="number" class="form-control" id="vdd" name="vdd">
               
               <label class="form-label form__recetas">Presión de aurícula derecha en mmHg</label>
-              <input type="number" class="form-control" id="ad" name="ad" value="25">
+              <input type="number" class="form-control" id="ad" name="ad">
               <label class="form-label form__recetas">Presión de aurícula izquierda en mmHg</label>
-              <input type="number" class="form-control" id="ai" name="ai" value="16">
+              <input type="number" class="form-control" id="ai" name="ai">
             </div>
             <hr>
             <div class="col-md-4">
               
               <label class="form-label form__recetas">Saturación arterial O2</label>
-              <input type="number" class="form-control" id="sato2" name="sato2" value="99">
+              <input type="number" class="form-control" id="sato2" name="sato2">
               <label class="form-label form__recetas">Saturación arteria pulmonar</label>
-              <input type="number" class="form-control" id="satap" name="satap" value="69">
+              <input type="number" class="form-control" id="satap" name="satap">
               <label class="form-label form__recetas">Saturación % VCS</label>
-              <input type="number" class="form-control" id="satvcs" name="satvcs" value="66">
+              <input type="number" class="form-control" id="satvcs" name="satvcs">
               <label class="form-label form__recetas">Saturación % VCI</label>
-              <input type="number" class="form-control" id="satvci" name="satvci"value="66">
+              <input type="number" class="form-control" id="satvci" name="satvci">
               
             </div>
             <div class="col-md-4">
               <label class="form-label form__recetas">Saturación % AD alta</label>
-              <input type="number" class="form-control" id="satada" name="satada"value="66">
+              <input type="number" class="form-control" id="satada" name="satada">
               <label class="form-label form__recetas">Saturación % AD media</label>
-              <input type="number" class="form-control" id="satadm" name="satadm"value="66">
+              <input type="number" class="form-control" id="satadm" name="satadm">
               <label class="form-label form__recetas">Saturación % AD baja</label>
-              <input type="number" class="form-control" id="satadb" name="satadb"value="66">
+              <input type="number" class="form-control" id="satadb" name="satadb">
               <label class="form-label form__recetas">Saturación % VD</label>
-              <input type="number" class="form-control" id="satvd" name="satvd"value="66">
+              <input type="number" class="form-control" id="satvd" name="satvd">
             </div>
             <hr>
 

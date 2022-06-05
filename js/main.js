@@ -2,6 +2,21 @@
 let datosfilAll = [];
 let lesiones = [];
 
+///Único uso de JQuery - con JS no pude hacerlo funcionar
+$("#listaconversion").hide();
+$('#si_conversion').click(function() {
+  if( $(this).is(':checked')) {
+     $("#listaconversion").show();
+  } 
+ });
+
+ $('#no_conversion').click(function() {
+  if( $(this).is(':checked')) {
+     $("#listaconversion").hide();
+  } 
+ });
+
+
 document.addEventListener('DOMContentLoaded', () => {
   mostrarBtn();
   chequearEntry();
@@ -9,13 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
 const botonera = document.querySelector("#botones");
 const contenedorLesiones = document.querySelector("#lesiones_cards");
 
+///Importante para poder determinar el número de card/lesión
 let nroLesiones = 0;
 
 function mostrarBtn() {
   botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div id = "can-btn" class="btn btn-primary" onclick="iniciar()">Coronarias normales</div>`);
 }
 
-
+////Agrego un cards para una lesión coronaria
 function agregarLesion() {
   const divLesion = document.createElement("div");
   nroLesiones += 1;
@@ -87,9 +103,21 @@ function agregarLesion() {
   cambiarBtn();
 }
 
+///En caso de que una arteria coronaria tenga más de una lesión (2), cambio el nombre de la arteria
+///Esto es importante para transcribir los datos al Docs y llenar el informe.
+function vasosRep (){
+  const repeticiones = ["DA", "CD", "Cx"];
+  if (nroLesiones > 0){
+  for (const rep of repeticiones){
+    const repetidos = document.querySelectorAll(`#${rep}_lesiones:checked`);
+    if (repetidos.length == 2){
+      repetidos[1].value = `${rep}2`
+    }
+    }
+  }
+}
 
-
-
+///Borro el card de una lesión en particular, y reenumero todas las lesiones/cards que le anteceden.
 function borrarLesion(e) {
   let posicion = e;
   const toErase = document.querySelector(`.card${posicion}`);
@@ -114,6 +142,7 @@ function cambiarBtn() {
   nroLesiones > 0 && (botonera.innerHTML = (`<div class="btn btn-secondary" onclick="agregarLesion()">Agregar lesión</div> <div class="btn btn-success" onclick="iniciar()">Ver informe preliminar</div>`));
 }
 
+///Chequeo si hay datos cargados en el localStorage
 function chequearEntry() {
   let datosfilAllStored = JSON.parse(localStorage.getItem("datosfillAll"));
   let lesionesStored = JSON.parse(localStorage.getItem("lesiones"));
@@ -150,7 +179,7 @@ class Lesiones {
   }
 
 }
-
+///Adquiero los datos del forms
 function iniciar() {
 
   let datosfiliatorios = {
@@ -207,7 +236,8 @@ function iniciar() {
   document.getElementsByName("cateteres").forEach((x) => acceso.cateteres.push(((x.checked || "") && x.value)))
 
   //Operadores
-  document.getElementsByName("operadores").forEach((x) => aspectos_tecnicos.operadores.push(((x.checked || "") && x.value)))
+  document.querySelectorAll('[for="operadores"]').forEach((x) => aspectos_tecnicos.operadores.push(((x.checked || "") && x.value)))
+  
 
   function compresion_sel() {
     return (document.getElementById("estandar").checked && "estandar") || (
@@ -215,7 +245,10 @@ function iniciar() {
       document.getElementById("sutura").checked && "sutura")
   }
 
-  lesiones = []; //Reseteo por si quiero volver a ejecutar la funcion
+  ///Chequeo y renombro a la arteria como arteria2 en caso de que haya 2 lesiones en la misma arteria
+  vasosRep();
+
+  lesiones = []; //Reseteo por si quiero volver a ejecutar la funcion por datos cambiados en el form
   for (i = 1; i <= nroLesiones; i++) {
     if (document.getElementById(`lesion${i}`) != undefined) {
       lesiones.push(new Lesiones(
@@ -233,6 +266,7 @@ function iniciar() {
     ...aspectos_tecnicos
   }
 
+  ///Almaceno los datos en localStorage
   let datosfillAllJSON = JSON.stringify(datosfilAll);
   localStorage.setItem("datosfillAll", datosfillAllJSON);
   let lesionesJSON = JSON.stringify(lesiones);
@@ -241,6 +275,7 @@ function iniciar() {
 }
 
 
+///Descripción de cada variable, para imprimir() los datos
 let nombres = {
   nombre: "Nombre y apellido",
   nroproc: "Nro de procedimiento",
@@ -263,16 +298,11 @@ let nombres = {
 }
 let resultados = document.querySelector("#resultados");
 
+
+///Muestro en pantalla todos los datos cargados
 function imprimir(datosfilAll, lesiones) {
-  const repeticiones = ["DA", "CD", "Cx"];
-  if (nroLesiones > 0){
-  for (const rep of repeticiones){
-    if (document.querySelectorAll(`#${rep}_lesiones`).length = 2){
-      (document.querySelectorAll(`#${rep}_lesiones`)[1].value = `${rep}2`)
-    }
-  }
-}
-  
+  ///En caso de que haya datos en el forms vacios, doy aviso
+  checkEmpty();
   resultados.innerHTML = (
     `<div><h2 class="h__md">Resultados preliminares del informe</h2>
     <table class="table table-sm table-hover table-striped">
@@ -295,7 +325,7 @@ function imprimir(datosfilAll, lesiones) {
   for (dato in data1) {
     str0 += "<tr>";
     str0 += "<td>" + nombres[dato] + "</td>";
-    str0 += "<td>" + String(data1[dato]).toUpperCase() + "</td>";
+    str0 += "<td>" + String(data1[dato]).toUpperCase().split(',').join(" ") + "</td>";
     str0 += "</tr>";
   }
   document.querySelector('#tabla_nombres').innerHTML = str0;
@@ -350,7 +380,7 @@ function imprimir(datosfilAll, lesiones) {
   resultados.appendChild(resultadosBtn);
 }
 
-
+///Fetch para el submit para enviar datos a WebApp de Google
 window.addEventListener("load", function() {
   const form = document.getElementById('formularioccg');
   form.addEventListener("submit", function(e) {
@@ -373,3 +403,16 @@ window.addEventListener("load", function() {
     }))
   });
 });
+
+///Chequeo si hay datos filiatorios incompletos y emito un alert. 
+///Con datos incompletos el Google Docs no se completa - crashea el código. 
+function checkEmpty() {
+    if (Object.values(datosfilAll).includes("") == true || Object.values(datosfilAll).includes(false) == true){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Falta completar datos, si continúa el informe no podrá ser efectuado.',
+        footer: '<a href="www.google.com.ar">¿Qué está pasando?</a>'
+      })
+    }
+  }

@@ -25,7 +25,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 
@@ -84,7 +84,7 @@
     <div class="container-fluid">
       <div id="formulario" class="">
         <div class="col px-3 px-sm-3 px-md-0 px-lg-0 px-xl-0">
-          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off" action="https://script.google.com/macros/s/AKfycbzbDYoVgQUa1b7ions-tGqFX8nFXg1UaMIC6X7GM56bVoks4BsibHL5nOyG7jOdhOP8hw/exec">
+          <form class="row g-3 justify-content-evenly" id="formularioccg" name="formularioccg" autocomplete="off" action="https://script.google.com/macros/s/AKfycbxfyo64VbDKBRsmAvpwXa8gBM4oC6II0a3VNDgWjG1XGSxQE2G9xurLD1P7RqcwLW_cJw/exec">
             <div class="col-md-4">
               <label class="form-label form__recetas" for="name_form">Nombre y apellido</label>
               <input type="text" class="form-control" id="name_form" name="nombre" required>
@@ -180,17 +180,17 @@
                 <div class="row">
                   <label class="form-label form__recetas">¿Requirió conversión?</label>
                 </div>
-                <input class="form-check-input" type="radio" name="conversion" id="si_conversion" value="si_conversion">
+                <input class="form-check-input" type="radio" name="conversion" id="si_conversion">
                 <label class="form-check-label" for="si_conversion">
                   Sí
                 </label>
-                <input class="form-check-input" type="radio" name="conversion" id="no_conversion" value="no_conversión">
+                <input class="form-check-input" type="radio" name="conversion" id="no_conversion">
                 <label class="form-check-label" for="no_conversion">
                   No
                 </label>
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-4" id="listaconversion">
                 <label class="form-label form__recetas" for="conversionwhy">Motivo de conversión</label>
                 <select class="form-select" id="motivo_conv" name="conversionwhy">
 
@@ -251,15 +251,15 @@
                 <input type="number" class="form-control" id="contraste" name="contraste">
               </div>
               <div class="col-md-4">
-                <label class="form-label form__recetas" for="operadores">Operadores</label>
+                <label class="form-label form__recetas">Operadores</label>
                 <div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="op1" value="bernal" id="bernal">
+                    <input class="form-check-input" type="checkbox" for="operadores" name="op1" value="bernal" id="bernal">
                     <label class="form-check-label">
                       Bernal
                     </label>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="op2" value="ramosF" id="ramosF">
+                      <input class="form-check-input" type="checkbox" for="operadores" name="op2" value="ramosF" id="ramosF">
                       <label class="form-check-label">
                         Ramos
                       </label>
@@ -267,13 +267,13 @@
                   </div>
                   <div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="op3" value="laino" id="laino">
+                      <input class="form-check-input" type="checkbox" for="operadores" name="op3" value="laino" id="laino">
                       <label class="form-check-label">
                         Laiño
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="op4" value="payaslian"
+                      <input class="form-check-input" type="checkbox" for="operadores" name="op4" value="payaslian"
                         id="payaslian">
                       <label class="form-check-label">
                         Payaslian
